@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-gepardec-mat",
       "sourceRoot": "projects/ngx-gepardec-mat/src",
-      "prefix": "lib",
+      "prefix": "gpx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
