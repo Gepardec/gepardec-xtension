@@ -59,12 +59,12 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     this.dataSource.data = data;
   }
 
-  @Input() displayedColumns!: (keyof T | string)[];
+  @Input() displayedColumns!: (Extract<keyof T, string>)[];
   @Input() translationPrefix!: string;
-  @Input() nonSortColumns: (keyof T | string)[] = [];
+  @Input() nonSortColumns: (Extract<keyof T, string>)[] = [];
   @Input() renderPaginator = true;
   @Input() renderNoDataRow = false;
-  @Input() sortActive?: keyof T | string;
+  @Input() sortActive?: Extract<keyof T, string>;
   @Input() sortDirection?: SortDirection;
   @Input() pageSize?: number;
   @Input() highlightRow?: (item: T) => boolean;
@@ -115,20 +115,20 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     return moment.isMoment(value);
   }
 
-  getHeaderByColumnName(columnName: keyof T | string): string {
+  getHeaderByColumnName(columnName: Extract<keyof T, string>): string {
     // @ts-ignore
     return this.translateService.instant(this.translationPrefix + '.' + columnName);
   }
 
-  isSortable(columnName: keyof T): boolean {
+  isSortable(columnName: Extract<keyof T, string>): boolean {
     return !this.nonSortColumns.includes(columnName);
   }
 
-  isInjected(columnName: keyof T): boolean {
+  isInjected(columnName: (keyof T | string)): boolean {
     return !!this.templateRefs.find(directive => directive.columnName === columnName);
   }
 
-  getInjectedTemplateByColumnName(columnName: keyof T | string): TemplateRef<any> {
+  getInjectedTemplateByColumnName(columnName: (keyof T | string) | string): TemplateRef<any> {
     // @ts-ignore
     return this.templateRefs.find(directive => directive.columnName === columnName).templateRef;
   }

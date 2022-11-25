@@ -3,6 +3,8 @@ import {CommonModule} from '@angular/common';
 
 import {DynamicTableContainerRoutingModule} from './dynamic-table-container-routing.module';
 import {DynamicTableContainerComponent} from './dynamic-table-container.component';
+import {DynamicTableModule} from 'ngx-gepardec-mat';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import {DynamicTableContainerComponent} from './dynamic-table-container.componen
   imports: [
     CommonModule,
     DynamicTableContainerRoutingModule,
+    DynamicTableModule,
+    TranslateModule.forRoot()
   ]
 })
 export class DynamicTableContainerModule {

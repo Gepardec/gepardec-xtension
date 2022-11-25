@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Person, personen} from './person';
+import {Person, persons} from './person';
 
 @Component({
   selector: 'app-dynamic-table-container',
@@ -8,6 +8,6 @@ import {Person, personen} from './person';
 })
 export class DynamicTableContainerComponent {
 
-  data: Person[] = personen;
-  displayedColumns: (keyof Person | string)[] = ['firstname', 'lastname', 'birthday', 'age'];
+  data: Person[] = persons;
+  displayedColumns: (Extract<keyof Person, string>)[] = ['firstname', 'lastname', 'birthday', 'age'];
 }

@@ -5,7 +5,7 @@ export interface Person {
   age: number;
 }
 
-export const personen: Person[] = [
+export const persons: Person[] = [
   {
     firstname: 'Oliver',
     lastname: 'Tod',
