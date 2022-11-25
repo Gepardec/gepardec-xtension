@@ -13,6 +13,10 @@ export const NAVIGATION_ROUTING: Route = {
     {
       path: 'frontend-frameworks',
       loadChildren: () => import('../components/frontend-frameworks/frontend-frameworks.module').then(m => m.FrontendFrameworksModule)
-    }
+    },
+    {
+      path: 'dynamic-table-container',
+      loadChildren: () => import('../components/dynamic-table-container/dynamic-table-container.module').then(m => m.DynamicTableContainerModule)
+    },
   ]
 };

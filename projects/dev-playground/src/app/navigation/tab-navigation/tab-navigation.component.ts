@@ -24,6 +24,11 @@ export class TabNavigationComponent implements OnInit {
         label: 'Frontend Frameworks',
         link: '/frontend-frameworks',
         index: 1
+      },
+      {
+        label: 'Dynamic Table',
+        link: '/dynamic-table-container',
+        index: 2
       }
     ]
   }
