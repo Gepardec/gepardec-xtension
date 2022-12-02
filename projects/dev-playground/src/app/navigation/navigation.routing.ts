@@ -18,5 +18,9 @@ export const NAVIGATION_ROUTING: Route = {
       path: 'dynamic-table-container',
       loadChildren: () => import('../components/dynamic-table-container/dynamic-table-container.module').then(m => m.DynamicTableContainerModule)
     },
+    {
+      path: 'inline-text-editor',
+      loadChildren: () => import('../components/inline-text-editor-test/inline-text-editor-test.module').then(m => m.InlineTextEditorTestModule)
+    }
   ]
 };

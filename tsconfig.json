@@ -10,10 +10,14 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "strictPropertyInitialization": false,
     "sourceMap": true,
     "paths": {
       "ngx-gepardec-mat": [
         "dist/ngx-gepardec-mat"
+      ],
+      "@angular/*": [
+        "./node_modules/@angular/*"
       ]
     },
     "declaration": false,

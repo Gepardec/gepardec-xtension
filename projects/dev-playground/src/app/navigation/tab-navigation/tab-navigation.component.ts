@@ -29,6 +29,11 @@ export class TabNavigationComponent implements OnInit {
         label: 'Dynamic Table',
         link: '/dynamic-table-container',
         index: 2
+      },
+      {
+        label: 'Inline Text Editor',
+        link: '/inline-text-editor',
+        index: 2
       }
     ]
   }

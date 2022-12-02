@@ -1,3 +1,12 @@
 .banner {
-  margin: auto;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
 }
