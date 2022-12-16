@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicTableComponent} from './dynamic-table.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import {DynamicTableComponent} from './dynamic-table.component';
     DynamicTableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTableModule
   ],
   exports: [
     DynamicTableComponent
