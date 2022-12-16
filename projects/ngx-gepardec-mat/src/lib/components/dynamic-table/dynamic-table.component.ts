@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ColumnSpec} from "./column-spec";
 import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'gpx-dynamic-table',
@@ -18,6 +19,10 @@ export class DynamicTableComponent<T> implements OnInit {
 
   @ViewChild(MatPaginator) set paginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
+  }
+
+  @ViewChild(MatSort) set sort(sort: MatSort) {
+    this.dataSource.sort = sort;
   }
 
   @Input() columnSpecs!: ColumnSpec[];
