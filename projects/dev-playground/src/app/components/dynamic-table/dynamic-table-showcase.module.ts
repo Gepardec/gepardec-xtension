@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DynamicTableShowcaseComponent} from './dynamic-table-showcase.component';
 import {DynamicTableShowcaseRoutingModule} from './dynamic-table-showcase-routing.module';
+import {DynamicTableModule} from 'ngx-gepardec-mat';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import {DynamicTableShowcaseRoutingModule} from './dynamic-table-showcase-routin
   ],
   imports: [
     CommonModule,
-    DynamicTableShowcaseRoutingModule
+    DynamicTableShowcaseRoutingModule,
+    DynamicTableModule
   ]
 })
 export class DynamicTableShowcaseModule {
