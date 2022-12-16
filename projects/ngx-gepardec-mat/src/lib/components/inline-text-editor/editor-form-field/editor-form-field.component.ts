@@ -38,13 +38,13 @@ export class EditorFormFieldComponent {
 
   onCancel(event: any, inputElement: HTMLTextAreaElement) {
     if (!event.relatedTarget || event.relatedTarget.id !== 'savebutton') {
-      //this.valueChange.emit(this.value);
+      this.valueChange.emit(this.value);
     } else {
       this.onSave(inputElement);
     }
   }
 
   onSave(inputElement: HTMLTextAreaElement) {
-    //this.valueChange.emit(inputElement.value.trim());
+    this.valueChange.emit(inputElement.value.trim());
   }
 }
