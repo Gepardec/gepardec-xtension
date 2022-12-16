@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ColumnSpec} from "./column-spec";
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'gpx-dynamic-table',
@@ -15,7 +16,12 @@ export class DynamicTableComponent<T> implements OnInit {
     this.dataSource.data = data;
   }
 
+  @ViewChild(MatPaginator) set paginator(paginator: MatPaginator) {
+    this.dataSource.paginator = paginator;
+  }
+
   @Input() columnSpecs!: ColumnSpec[];
+  @Input() disablePaginator?: boolean;
 
   ngOnInit(): void {
   }
