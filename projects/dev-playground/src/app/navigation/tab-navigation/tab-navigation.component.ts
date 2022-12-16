@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -24,6 +24,11 @@ export class TabNavigationComponent implements OnInit {
         label: 'Frontend Frameworks',
         link: '/frontend-frameworks',
         index: 1
+      },
+      {
+        label: 'Dynamic Table',
+        link: '/dynamic-table-showcase',
+        index: 2
       }
     ]
   }
