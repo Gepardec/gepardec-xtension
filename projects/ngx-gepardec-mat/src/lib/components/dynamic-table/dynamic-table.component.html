@@ -1,21 +1,21 @@
 <p>gpx-dynamic-table works!</p>
 
 <table mat-table [dataSource]="dataSource">
-  <ng-container *ngFor="let dynamicColumn of displayedColumns" [matColumnDef]="dynamicColumn">
+  <ng-container *ngFor="let columnSpec of columnSpecs" [matColumnDef]="columnSpec.displayedColumn">
 
     <ng-container>
-      <th *matHeaderCellDef mat-header-cell>{{dynamicColumn}}</th>
+      <th *matHeaderCellDef mat-header-cell>{{columnSpec.header}}</th>
     </ng-container>
 
     <ng-container>
-      <td *matCellDef="let data" mat-cell>{{data[dynamicColumn]}}</td>
+      <td *matCellDef="let data" mat-cell>{{data[columnSpec.displayedColumn]}}</td>
     </ng-container>
 
   </ng-container>
 
-  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matHeaderRowDef="getDisplayedColumns()" mat-header-row></tr>
 
-  <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+  <tr *matRowDef="let row; columns: getDisplayedColumns()" mat-row></tr>
 
 
 </table>

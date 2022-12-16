@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {ColumnSpec} from "./column-spec";
 
 @Component({
   selector: 'gpx-dynamic-table',
@@ -14,9 +15,14 @@ export class DynamicTableComponent<T> implements OnInit {
     this.dataSource.data = data;
   }
 
-  @Input() displayedColumns!: (Extract<keyof T, string>)[];
+  @Input() columnSpecs!: ColumnSpec[];
 
   ngOnInit(): void {
+  }
+
+
+  getDisplayedColumns(): string[] {
+    return this.columnSpecs.map(columSpec => columSpec.displayedColumn)
   }
 
 }
