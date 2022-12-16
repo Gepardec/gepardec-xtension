@@ -22,7 +22,10 @@ export class InlineTextEditorComponent {
   valueChange(value: string): void {
     this.showCommentEditor = false;
 
-    this.value !== value ? this.valueChangeEvent.emit(value) : null;
+    if (this.value !== value) {
+      this.valueChangeEvent.emit(value);
+    }
+
     this.value = value;
   }
 }
