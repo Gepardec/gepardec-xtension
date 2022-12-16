@@ -2,6 +2,7 @@
 
 <ng-template #inlineTextEditor let-val='value'>
   <gpx-inline-text-editor [value]="val"
+                          [formFieldWidth]="'50%'"
                           [maximumLetters]="200"
                           (valueChangeEvent)="valueChange($event)"></gpx-inline-text-editor>
 </ng-template>

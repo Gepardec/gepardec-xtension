@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field [style]="'width:' + formFieldWidth">
     <textarea #autosize="cdkTextareaAutosize"
               #textarea
               (focusout)="onCancel($event, textarea)"

@@ -11,6 +11,7 @@
   <gpx-editor-form-field *ngIf="showCommentEditor"
                          [value]="value"
                          [maximumLetters]="maximumLetters"
+                         [formFieldWidth]="formFieldWidth"
                          (valueChange)="valueChange($event)">
   </gpx-editor-form-field>
 </div>

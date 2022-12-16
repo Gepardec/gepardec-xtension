@@ -10,6 +10,8 @@ export class InlineTextEditorComponent {
   @Input() value: string = '';
   @Input() maximumLetters: number = 500;
 
+  @Input() formFieldWidth: string = '100%'
+
   @Output() valueChangeEvent: EventEmitter<string> = new EventEmitter<string>();
 
   showCommentEditor = false;
