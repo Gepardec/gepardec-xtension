@@ -5,3 +5,4 @@
 // Dynamic table
 export * from './lib/components/dynamic-table/dynamic-table.component';
 export * from './lib/components/dynamic-table/dynamic-table.module';
+export * from './lib/components/dynamic-table/column-spec';
