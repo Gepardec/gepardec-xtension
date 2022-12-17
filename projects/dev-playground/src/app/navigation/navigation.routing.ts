@@ -16,7 +16,7 @@ export const NAVIGATION_ROUTING: Route = {
     },
     {
       path: 'dynamic-table-showcase',
-      loadChildren: () => import('../components/dynamic-table/dynamic-table-showcase.module').then(m => m.DynamicTableShowcaseModule)
+      loadChildren: () => import('../components/dynamic-table-showcase/dynamic-table-showcase.module').then(m => m.DynamicTableShowcaseModule)
     },
   ]
 };
