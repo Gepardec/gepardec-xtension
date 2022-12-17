@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FrontendFrameworkComponent } from './frontend-framework.component';
+import {FrontendFrameworkComponent} from './frontend-framework.component';
 
 describe('FrontendFrameworkComponent', () => {
   let component: FrontendFrameworkComponent;
@@ -8,9 +8,9 @@ describe('FrontendFrameworkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FrontendFrameworkComponent ]
+      declarations: [FrontendFrameworkComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

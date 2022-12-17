@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TabNavigationComponent} from './tab-navigation/tab-navigation.component';
-import {AngularMaterialModule} from '../angular-material.module';
 import {RouterModule} from '@angular/router';
 import {NAVIGATION_ROUTING} from './navigation.routing';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -12,8 +12,8 @@ import {NAVIGATION_ROUTING} from './navigation.routing';
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule,
-    RouterModule.forChild([NAVIGATION_ROUTING])
+    RouterModule.forChild([NAVIGATION_ROUTING]),
+    MatTabsModule
   ]
 })
 export class NavigationModule {

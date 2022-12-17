@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {Person, persons} from "../../testdata/person.model";
-import {ColumnSpec} from "../../../../../ngx-gepardec-mat/src/lib/components/dynamic-table/column-spec";
+import {Person, persons} from '../../testdata/person.model';
+import {ColumnSpec} from '../../../../../ngx-gepardec-mat/src/lib/components/dynamic-table/column-spec';
 
 @Component({
   selector: 'app-dynamic-table-showcase',
@@ -11,6 +11,18 @@ import {ColumnSpec} from "../../../../../ngx-gepardec-mat/src/lib/components/dyn
 export class DynamicTableShowcaseComponent {
 
   data: Person[] = persons;
-  columnSpecs: ColumnSpec[] = [{displayedColumn: 'firstname', header: 'Vorname'}, {displayedColumn: 'lastname', header: 'Nachname'}, {displayedColumn: 'age', header: 'Alter'}];
-
+  columnSpecs: ColumnSpec[] = [
+    {
+      displayedColumn: 'firstname',
+      header: 'Vorname'
+    },
+    {
+      displayedColumn: 'lastname',
+      header: 'Nachname'
+    },
+    {
+      displayedColumn: 'age',
+      header: 'Alter'
+    }
+  ];
 }
