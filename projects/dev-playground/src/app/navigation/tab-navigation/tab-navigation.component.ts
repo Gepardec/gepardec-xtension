@@ -16,19 +16,9 @@ export class TabNavigationComponent implements OnInit {
   ) {
     this.navLinks = [
       {
-        label: 'Counter',
-        link: '/counter',
-        index: 0
-      },
-      {
-        label: 'Frontend Frameworks',
-        link: '/frontend-frameworks',
-        index: 1
-      },
-      {
         label: 'Dynamic Table',
         link: '/dynamic-table-showcase',
-        index: 2
+        index: 0
       }
     ]
   }
