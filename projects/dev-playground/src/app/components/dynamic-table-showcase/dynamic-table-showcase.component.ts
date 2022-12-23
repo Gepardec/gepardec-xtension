@@ -11,7 +11,7 @@ import {ColumnSpec} from '../../../../../ngx-gepardec-mat/src/lib/components/dyn
 export class DynamicTableShowcaseComponent {
 
   data: Person[] = persons;
-  columnSpecs: ColumnSpec[] = [
+  columnSpecs: ColumnSpec<Person>[] = [
     {
       displayedColumn: 'firstname',
       header: 'Vorname'

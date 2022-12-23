@@ -1,7 +1,11 @@
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container *ngFor="let columnSpec of columnSpecs" [matColumnDef]="columnSpec.displayedColumn">
 
-    <ng-container>
+    <ng-container *ngIf="!isColumnSorted(columnSpec.displayedColumn)">
+      <th *matHeaderCellDef mat-header-cell>{{columnSpec.header}}</th>
+    </ng-container>
+
+    <ng-container *ngIf="isColumnSorted(columnSpec.displayedColumn)">
       <th *matHeaderCellDef mat-header-cell mat-sort-header>{{columnSpec.header}}</th>
     </ng-container>
 

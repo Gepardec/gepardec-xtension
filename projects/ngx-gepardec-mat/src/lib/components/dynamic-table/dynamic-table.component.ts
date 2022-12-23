@@ -25,8 +25,9 @@ export class DynamicTableComponent<T> implements OnInit {
     this.dataSource.sort = sort;
   }
 
-  @Input() columnSpecs!: ColumnSpec[];
+  @Input() columnSpecs!: ColumnSpec<T>[];
   @Input() disablePaginator?: boolean;
+  @Input() columnsExcludedFromSort: (Extract<keyof T, string>)[] = [];
 
   ngOnInit(): void {
   }
@@ -35,5 +36,10 @@ export class DynamicTableComponent<T> implements OnInit {
   getDisplayedColumns(): string[] {
     return this.columnSpecs.map(columSpec => columSpec.displayedColumn)
   }
+
+  isColumnSorted(singleColumn: Extract<keyof T, string>): boolean {
+    return !this.columnsExcludedFromSort.includes(singleColumn);
+  }
+
 
 }
