@@ -6,6 +6,11 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {NavigationModule} from './navigation/navigation.module';
+import {DYNAMIC_TABLE_DEFAULT_CONFIG, DynamicTableConfig} from "ngx-gepardec-mat";
+
+export const TABLE_CONFIG: DynamicTableConfig = {
+  rowColour: 'red'
+};
 
 @NgModule({
   declarations: [
@@ -16,9 +21,9 @@ import {NavigationModule} from './navigation/navigation.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    NavigationModule,
+    NavigationModule
   ],
-  providers: [],
+  providers: [{provide: DYNAMIC_TABLE_DEFAULT_CONFIG, useValue: TABLE_CONFIG}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
