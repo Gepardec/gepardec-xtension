@@ -10,9 +10,13 @@
     </ng-container>
 
     <ng-container>
-      <td *matCellDef="let data" mat-cell>{{data[columnSpec.displayedColumn]}}</td>
+      <td *matCellDef="let data" mat-cell>
+        {{
+        isSerializedDate(data[columnSpec.displayedColumn])
+          ? (data[columnSpec.displayedColumn] | date: 'dd.MM.YYYY HH:mm')
+          : data[columnSpec.displayedColumn] + "test"
+        }}</td>
     </ng-container>
-
   </ng-container>
 
   <tr *matHeaderRowDef="getDisplayedColumns()" mat-header-row></tr>

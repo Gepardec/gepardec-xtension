@@ -21,6 +21,10 @@ export class DynamicTableShowcaseComponent {
       header: 'Nachname'
     },
     {
+      displayedColumn: 'birthday',
+      header: 'Geburtstag'
+    },
+    {
       displayedColumn: 'age',
       header: 'Alter'
     }
