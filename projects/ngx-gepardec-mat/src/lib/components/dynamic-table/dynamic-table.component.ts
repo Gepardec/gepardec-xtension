@@ -4,6 +4,8 @@ import {ColumnSpec} from "./column-spec";
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from "@angular/material/sort";
 import {DynamicTableConfig} from "./DynamicTableConfig";
+import {Moment} from 'moment';
+import * as moment from 'moment';
 
 export function DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(): DynamicTableConfig {
   return {
@@ -27,7 +29,7 @@ export const DYNAMIC_TABLE_DEFAULT_CONFIG = new InjectionToken<DynamicTableConfi
 })
 export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
-  private readonly DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}\+\d{2}:\d{2}/;
+  private readonly DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
   dataSource = new MatTableDataSource<T>();
 
   @Input() set data(data: T[]) {
@@ -68,6 +70,10 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
   isSerializedDate(value: string): boolean {
     return this.DATE_REGEX.test(value);
+  }
+
+  isMoment(value: Moment): boolean {
+    return moment.isMoment(value);
   }
 
   getDisplayedColumns(): string[] {
