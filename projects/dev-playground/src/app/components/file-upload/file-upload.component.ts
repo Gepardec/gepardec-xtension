@@ -14,15 +14,26 @@ export class FileUploadComponent {
   @Input() maxSize: number = -1;
   @Input() noFileUploadedText: string = 'No file uploaded yet.';
 
-  @Output() filesUploadedEvent: EventEmitter<FileList> = new EventEmitter<FileList>();
-  @Output() maxNumberOfFilesExceededEvent: EventEmitter<FileList> = new EventEmitter<FileList>();
+  @Output() filesUploadedEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
+  @Output() maxNumberOfFilesExceededEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
 
   fileName: string = '';
 
   onFileSelected(event: any) {
+    const fileList: FileList = event.target.files;
+    let files = Array.from(fileList);
+    this.handleUploadedFiles(files);
+  }
 
-    const files: FileList = event.target.files;
+  onFilesDropped(files: File[]): void {
+    if(!this.multiple && files.length > 1){
+      files = Array.of(files[0]);
+    }
 
+    this.handleUploadedFiles(files);
+  }
+
+  handleUploadedFiles(files: Array<File>) {
     if (this.multiple && this.maxSize !== -1 && files.length > this.maxSize) {
       this.maxNumberOfFilesExceededEvent.emit(files);
       return;
@@ -31,7 +42,7 @@ export class FileUploadComponent {
     if (files) {
       this.fileName = Array.from(files)
         .map(file => file.name)
-        .join(", ");
+        .join(', ');
 
       this.filesUploadedEvent.emit(files);
     }
