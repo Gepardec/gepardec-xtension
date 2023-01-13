@@ -1,11 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {InlineTextEditorTestComponent} from './inline-text-editor-test.component';
-import {
-  InlineTextEditorModule
-} from '../../../../../ngx-gepardec-mat/src/lib/components/inline-text-editor/inline-text-editor.module';
 import {InlineTextEditorTestRoutingModule} from './inline-text-editor-test-routing.module';
-import {AngularMaterialModule} from '../../angular-material.module';
+import {InlineTextEditorModule} from 'ngx-gepardec-mat';
 
 
 @NgModule({
@@ -15,8 +12,7 @@ import {AngularMaterialModule} from '../../angular-material.module';
   imports: [
     CommonModule,
     InlineTextEditorModule,
-    InlineTextEditorTestRoutingModule,
-    AngularMaterialModule
+    InlineTextEditorTestRoutingModule
   ]
 })
 export class InlineTextEditorTestModule {
