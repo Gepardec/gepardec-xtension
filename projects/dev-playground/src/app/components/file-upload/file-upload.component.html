@@ -1,0 +1,23 @@
+<input type="file" class="file-input"
+       [multiple]="multiple"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+  <ng-container *ngIf="uploadTitle && fileName; then uploadTitleTemplate; else defaultTitleTemplate"></ng-container>
+
+
+  <button mat-mini-fab color="primary" class="upload-btn"
+          (click)="fileUpload.click()">
+    <mat-icon>attach_file</mat-icon>
+  </button>
+</div>
+
+
+<ng-template #uploadTitleTemplate>
+  <p  class="file-name">{{uploadTitle}}</p>
+</ng-template>
+
+<ng-template #defaultTitleTemplate>
+  <p class="file-name">{{fileName || noFileUploadedText}}</p>
+</ng-template>
