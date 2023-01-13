@@ -1,6 +1,7 @@
 <table mat-table [dataSource]="dataSource" matSort>
   <ng-container *ngFor="let columnSpec of columnSpecs" [matColumnDef]="columnSpec.displayedColumn">
 
+    <!--HEADER-->
     <ng-container *ngIf="!isColumnSorted(columnSpec.displayedColumn)">
       <th *matHeaderCellDef mat-header-cell>{{columnSpec.header}}</th>
     </ng-container>
@@ -9,7 +10,8 @@
       <th *matHeaderCellDef mat-header-cell mat-sort-header>{{columnSpec.header}}</th>
     </ng-container>
 
-    <ng-container>
+    <!--DATA-->
+    <ng-container *ngIf="!isInjected(columnSpec.displayedColumn)">
       <td *matCellDef="let data" mat-cell>
         {{
         isSerializedDate(data[columnSpec.displayedColumn]) || isMoment(data[columnSpec.displayedColumn])
@@ -17,12 +19,18 @@
           : data[columnSpec.displayedColumn]
         }}</td>
     </ng-container>
+
+    <ng-container *ngIf="isInjected(columnSpec.displayedColumn)">
+      <td *matCellDef="let data; let dataIdx = index" mat-cell>
+        <ng-container
+          *ngTemplateOutlet="getInjectedTemplateRef(columnSpec.displayedColumn); context: getViewContext(data, dataIdx)">
+        </ng-container>
+      </td>
+    </ng-container>
   </ng-container>
 
   <tr *matHeaderRowDef="getDisplayedColumns()" mat-header-row></tr>
-
   <tr *matRowDef="let row; columns: getDisplayedColumns()" mat-row></tr>
-
 </table>
 <mat-paginator *ngIf="!disablePaginator"
                [pageSize]="10"

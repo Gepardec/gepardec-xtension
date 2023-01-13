@@ -13,13 +13,17 @@ export class DynamicTableShowcaseComponent {
   data: Person[] = persons;
   columnSpecs: ColumnSpec<Person>[] = [
     {
-      displayedColumn: 'firstname',
-      header: 'Vorname'
+      displayedColumn: 'firstname-lastname',
+      header: 'Vollständiger Name'
     },
-    {
-      displayedColumn: 'lastname',
-      header: 'Nachname'
-    },
+    // {
+    //   displayedColumn: 'firstname',
+    //   header: 'Vorname'
+    // },
+    // {
+    //   displayedColumn: 'lastname',
+    //   header: 'Nachname'
+    // },
     {
       displayedColumn: 'birthday',
       header: 'Geburtstag'

@@ -1,11 +1,24 @@
-import {AfterContentInit, Component, ElementRef, Inject, InjectionToken, Input, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {ColumnSpec} from "./column-spec";
+import {
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  ElementRef,
+  Inject,
+  InjectionToken,
+  Input,
+  OnInit,
+  QueryList,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {ColumnSpec} from './column-spec';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from "@angular/material/sort";
-import {DynamicTableConfig} from "./DynamicTableConfig";
-import {Moment} from 'moment';
+import {MatSort} from '@angular/material/sort';
+import {DynamicTableConfig} from './DynamicTableConfig';
 import * as moment from 'moment';
+import {Moment} from 'moment';
+import {InjectionMarkerDirective} from './injection-marker.directive';
 
 export function DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(): DynamicTableConfig {
   return {
@@ -21,6 +34,10 @@ export const DYNAMIC_TABLE_DEFAULT_CONFIG = new InjectionToken<DynamicTableConfi
   },
 );
 
+export interface ViewContext<T> {
+  $implicit: T;
+  index: number;
+}
 
 @Component({
   selector: 'gpx-dynamic-table',
@@ -45,7 +62,7 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
   @Input() columnSpecs!: ColumnSpec<T>[];
   @Input() disablePaginator?: boolean;
-  @Input() columnsExcludedFromSort: (Extract<keyof T, string>)[] = [];
+  @Input() columnsExcludedFromSort: (Extract<keyof T | string, string>)[] = [];
 
   @Input() set rowColour(colour: `#${string}` | string) {
     this._rowColour = colour;
@@ -53,10 +70,12 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
   _rowColour!: `#${string}` | string
 
+  @ContentChildren(InjectionMarkerDirective) templateRefs: QueryList<InjectionMarkerDirective> = new QueryList<InjectionMarkerDirective>();
+
   constructor(protected elementRef: ElementRef, @Inject(DYNAMIC_TABLE_DEFAULT_CONFIG) tableConfig: DynamicTableConfig) {
 
     if (tableConfig && tableConfig.rowColour) {
-       this._rowColour = tableConfig.rowColour;
+      this._rowColour = tableConfig.rowColour;
     }
   }
 
@@ -79,11 +98,27 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     return this.columnSpecs.map(columSpec => columSpec.displayedColumn)
   }
 
-  isColumnSorted(singleColumn: Extract<keyof T, string>): boolean {
+  isColumnSorted(singleColumn: Extract<keyof T | string, string>): boolean {
     return !this.columnsExcludedFromSort.includes(singleColumn);
   }
 
   updateColourInCss() {
     this.elementRef.nativeElement.style.setProperty('--rowCol', this._rowColour)
+  }
+
+  isInjected(columnName: Extract<keyof T | string, string>): boolean {
+    return !!this.templateRefs.find(directive => directive.columnName === columnName);
+  }
+
+  getViewContext(element: T, index: number): ViewContext<T> {
+    return {
+      $implicit: element,
+      index
+    }
+  }
+
+  getInjectedTemplateRef(columnName: Extract<keyof T | string, string>): TemplateRef<any> | null {
+    const find = this.templateRefs.find(directive => directive.columnName === columnName);
+    return find ? find.templateRef : null;
   }
 }
