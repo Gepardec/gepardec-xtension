@@ -29,7 +29,6 @@ export const DYNAMIC_TABLE_DEFAULT_CONFIG = new InjectionToken<DynamicTableConfi
 })
 export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
-  private readonly DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
   dataSource = new MatTableDataSource<T>();
 
   @Input() set data(data: T[]) {
@@ -68,8 +67,8 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     this.updateColourInCss();
   }
 
-  isSerializedDate(value: string): boolean {
-    return this.DATE_REGEX.test(value);
+  isSerializedDate(value: any): boolean {
+    return value instanceof Date;
   }
 
   isMoment(value: Moment): boolean {

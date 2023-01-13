@@ -13,7 +13,7 @@
       <td *matCellDef="let data" mat-cell>
         {{
         isSerializedDate(data[columnSpec.displayedColumn]) || isMoment(data[columnSpec.displayedColumn])
-          ? (data[columnSpec.displayedColumn] | date: 'dd.MM.YYYY HH:mm')
+          ? (data[columnSpec.displayedColumn] | date: 'dd.MM.yyyy')
           : data[columnSpec.displayedColumn]
         }}</td>
     </ng-container>
