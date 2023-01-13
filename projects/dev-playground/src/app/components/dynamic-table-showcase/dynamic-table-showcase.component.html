@@ -1,7 +1,6 @@
 <gpx-dynamic-table [columnSpecs]="columnSpecs"
                    [data]="data"
-                   [columnsExcludedFromSort]="['age']"
->
+                   [columnsExcludedFromSort]="['age']">
   <ng-template [gpxInjectionMarker]="'firstname-lastname'" let-item>
     <span>{{item.firstname}} {{item.lastname}}</span>
   </ng-template>

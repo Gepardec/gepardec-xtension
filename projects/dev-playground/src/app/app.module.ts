@@ -9,8 +9,8 @@ import {NavigationModule} from './navigation/navigation.module';
 import {DYNAMIC_TABLE_DEFAULT_CONFIG, DynamicTableConfig} from "ngx-gepardec-mat";
 
 export const TABLE_CONFIG: DynamicTableConfig = {
-  rowColour: 'red',
-  dateFormat: 'yyyy/MM/dd'
+  rowColor: 'red',
+  dateFormat: 'yyyy/MM/dd',
 };
 
 @NgModule({

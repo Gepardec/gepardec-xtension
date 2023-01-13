@@ -22,8 +22,9 @@ import {InjectionMarkerDirective} from './injection-marker.directive';
 
 export function DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(): DynamicTableConfig {
   return {
-    rowColour: '#dedede',
-    dateFormat: 'dd.MM.yyyy HH:mm'
+    rowColor: '#dedede',
+    dateFormat: 'dd.MM.yyyy HH:mm',
+    pageSizeOptions: [10, 20, 50, 100]
   };
 }
 
@@ -69,40 +70,50 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     this._dateFormat = format;
   }
 
-  @Input() set rowColour(colour: `#${string}` | string) {
-    this._rowColour = colour;
+  @Input() set rowColor(color: `#${string}` | string) {
+    this._rowColor = color;
   }
 
-  _rowColour!: `#${string}` | string
+  @Input() set pageSizeOptions(pageSizeOptions: number[]) {
+    this._pageSizeOptions = pageSizeOptions;
+  }
+
+  /*Internal fields*/
+  _rowColor!: `#${string}` | string
   _dateFormat!: string
+  _pageSizeOptions!: number[];
+  _pageSize!: number;
 
   @ContentChildren(InjectionMarkerDirective) templateRefs: QueryList<InjectionMarkerDirective> = new QueryList<InjectionMarkerDirective>();
 
   constructor(protected elementRef: ElementRef, @Inject(DYNAMIC_TABLE_DEFAULT_CONFIG) tableConfig: DynamicTableConfig) {
-
+    // merge default config with custom config
     tableConfig = {
       ...DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(),
       ...tableConfig
     }
 
     if (tableConfig) {
-      if (tableConfig.rowColour) {
-        this._rowColour = tableConfig.rowColour;
+      if (tableConfig.rowColor) {
+        this._rowColor = tableConfig.rowColor;
       }
 
       if (tableConfig.dateFormat) {
         this._dateFormat = tableConfig.dateFormat;
       }
+
+      if (tableConfig.pageSizeOptions) {
+        this._pageSizeOptions = tableConfig.pageSizeOptions;
+        this._pageSize = this._pageSizeOptions[0];
+      }
     }
-
   }
-
 
   ngOnInit(): void {
   }
 
   ngAfterContentInit(): void {
-    this.updateColourInCss();
+    this.updateColorInCss();
   }
 
   isSerializedDate(value: any): boolean {
@@ -117,12 +128,12 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
     return this.columnSpecs.map(columSpec => columSpec.displayedColumn)
   }
 
-  isColumnSorted(singleColumn: Extract<keyof T | string, string>): boolean {
-    return !this.columnsExcludedFromSort.includes(singleColumn);
+  isColumnSorted(columnName: Extract<keyof T | string, string>): boolean {
+    return !this.columnsExcludedFromSort.includes(columnName);
   }
 
-  updateColourInCss() {
-    this.elementRef.nativeElement.style.setProperty('--rowCol', this._rowColour)
+  updateColorInCss() {
+    this.elementRef.nativeElement.style.setProperty('--rowColor', this._rowColor)
   }
 
   isInjected(columnName: Extract<keyof T | string, string>): boolean {

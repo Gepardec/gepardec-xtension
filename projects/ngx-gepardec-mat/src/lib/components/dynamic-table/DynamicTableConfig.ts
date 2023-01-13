@@ -1,4 +1,5 @@
 export interface DynamicTableConfig {
-  rowColour?: `#${string}` | string
+  rowColor?: `#${string}` | string
   dateFormat?: string
+  pageSizeOptions?: number[];
 }
