@@ -25,7 +25,8 @@ export class FileUploadComponent {
     this.handleUploadedFiles(files);
   }
 
-  onFilesDropped(files: File[]): void {
+  onFilesDropped(fileList: FileList): void {
+    let files: File[] = Array.from(fileList)
     if(!this.multiple && files.length > 1){
       files = Array.of(files[0]);
     }
@@ -40,7 +41,7 @@ export class FileUploadComponent {
     }
 
     if (files) {
-      this.fileName = Array.from(files)
+      this.fileName = files
         .map(file => file.name)
         .join(', ');
 
