@@ -3,7 +3,7 @@
        (change)="onFileSelected($event)"
        #fileUpload>
 
-<div class="file-upload" DropZone  (onFileDropped)="onFilesDropped($event)" style="width: 50%">
+<div class="file-upload" DropZone  (onFileDropped)="onFilesDropped($event)">
 
   <ng-container *ngIf="uploadTitle && fileName; then uploadTitleTemplate; else defaultTitleTemplate"></ng-container>
 

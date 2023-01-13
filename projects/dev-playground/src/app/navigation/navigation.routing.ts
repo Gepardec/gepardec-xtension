@@ -20,7 +20,7 @@ export const NAVIGATION_ROUTING: Route = {
     },
     {
       path: 'file-upload',
-      loadChildren: () => import('../components/file-upload/file-upload.module').then(m => m.FileUploadModule)
+      loadChildren: () => import('../components/file-upload-test/file-upload-test.module').then(m => m.FileUploadTestModule)
     }
   ]
 };
