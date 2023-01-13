@@ -17,6 +17,10 @@ export const NAVIGATION_ROUTING: Route = {
     {
       path: 'inline-text-editor',
       loadChildren: () => import('../components/inline-text-editor-test/inline-text-editor-test.module').then(m => m.InlineTextEditorTestModule)
+    },
+    {
+      path: 'file-upload',
+      loadChildren: () => import('../components/file-upload/file-upload.module').then(m => m.FileUploadModule)
     }
   ]
 };

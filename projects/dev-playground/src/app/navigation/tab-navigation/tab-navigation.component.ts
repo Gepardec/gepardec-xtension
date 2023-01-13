@@ -33,7 +33,12 @@ export class TabNavigationComponent implements OnInit {
       {
         label: 'Inline Text Editor',
         link: '/inline-text-editor',
-        index: 2
+        index: 3
+      },
+      {
+        label: 'File Upload',
+        link: '/file-upload',
+        index: 4
       }
     ]
   }
