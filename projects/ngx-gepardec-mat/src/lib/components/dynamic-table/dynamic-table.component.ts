@@ -23,6 +23,7 @@ import {InjectionMarkerDirective} from './injection-marker.directive';
 export function DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(): DynamicTableConfig {
   return {
     rowColour: '#dedede',
+    dateFormat: 'dd.MM.yyyy HH:mm'
   };
 }
 
@@ -64,20 +65,38 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
   @Input() disablePaginator?: boolean;
   @Input() columnsExcludedFromSort: (Extract<keyof T | string, string>)[] = [];
 
+  @Input() set dateFormat(format: string) {
+    this._dateFormat = format;
+  }
+
   @Input() set rowColour(colour: `#${string}` | string) {
     this._rowColour = colour;
   }
 
   _rowColour!: `#${string}` | string
+  _dateFormat!: string
 
   @ContentChildren(InjectionMarkerDirective) templateRefs: QueryList<InjectionMarkerDirective> = new QueryList<InjectionMarkerDirective>();
 
   constructor(protected elementRef: ElementRef, @Inject(DYNAMIC_TABLE_DEFAULT_CONFIG) tableConfig: DynamicTableConfig) {
 
-    if (tableConfig && tableConfig.rowColour) {
-      this._rowColour = tableConfig.rowColour;
+    tableConfig = {
+      ...DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(),
+      ...tableConfig
     }
+
+    if (tableConfig) {
+      if (tableConfig.rowColour) {
+        this._rowColour = tableConfig.rowColour;
+      }
+
+      if (tableConfig.dateFormat) {
+        this._dateFormat = tableConfig.dateFormat;
+      }
+    }
+
   }
+
 
   ngOnInit(): void {
   }
