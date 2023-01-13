@@ -6,6 +6,8 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "strictPropertyInitialization": false,
+    "keyofStringsOnly": false,
     "types": []
   },
   "exclude": [

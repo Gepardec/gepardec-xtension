@@ -16,9 +16,14 @@ export class TabNavigationComponent implements OnInit {
   ) {
     this.navLinks = [
       {
+        label: 'Inline Text Editor',
+        link: '/inline-text-editor',
+        index: 0
+      },
+      {
         label: 'Dynamic Table',
         link: '/dynamic-table-showcase',
-        index: 0
+        index: 1
       }
     ]
   }

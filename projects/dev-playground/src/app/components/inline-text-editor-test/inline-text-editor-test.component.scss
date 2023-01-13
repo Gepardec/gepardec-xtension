@@ -1,0 +1,11 @@
+.comment-container {
+  display: flex;
+  white-space: pre-wrap;
+  align-items: center;
+  vertical-align: center;
+  cursor: pointer;
+}
+
+.comment-container > p {
+  margin: 0 0;
+}
