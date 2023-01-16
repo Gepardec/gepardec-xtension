@@ -21,7 +21,7 @@
       <gpx-file-upload [multiple]="true"
                        [maxSize]="5"
                        [noFileUploadedText]="'Keine Dateien hochgeladen.'"
-                       [uploadTitle]="title"
+                       [uploadTitle]="buildTitle(element.files)"
                        (filesUploadedEvent)="filesUploaded(element.id, $event)">
       </gpx-file-upload>
     </td>

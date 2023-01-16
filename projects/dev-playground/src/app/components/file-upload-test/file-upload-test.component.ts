@@ -20,17 +20,18 @@ export class FileUploadTestComponent {
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: File | null;
 
-  title = '';
-
   filesUploaded(index: number, files: Array<File>) {
-    console.log(index)
+    this.dataSource[index].files = files;
+  }
 
-    this.title = files.length + ' Dateien hochgeladen.';
+  buildTitle(files: Array<File>) {
+    let title = '';
+    title = files.length + ' Dateien hochgeladen.';
     if (files.length == 1) {
-      this.title = files.length + ' Datei hochgeladen.';
+      title = files.length + ' Datei hochgeladen.';
     }
 
-    this.dataSource[index].files = files;
+    return title;
   }
 }
 
