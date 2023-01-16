@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}

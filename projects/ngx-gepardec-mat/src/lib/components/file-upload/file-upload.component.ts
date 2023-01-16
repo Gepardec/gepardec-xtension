@@ -21,13 +21,13 @@ export class FileUploadComponent {
 
   onFileSelected(event: any) {
     const fileList: FileList = event.target.files;
-    let files = Array.from(fileList);
+    const files: Array<File> = Array.from(fileList);
     this.handleUploadedFiles(files);
   }
 
   onFilesDropped(fileList: FileList): void {
     let files: File[] = Array.from(fileList)
-    if(!this.multiple && files.length > 1){
+    if (!this.multiple && files.length > 1) {
       files = Array.of(files[0]);
     }
 

@@ -1,5 +1,72 @@
-<gpx-file-upload [multiple]="true"
-                 [maxSize]="5"
-                 [uploadTitle]="title"
-                 (filesUploadedEvent)="filesUploaded($event)"
-></gpx-file-upload>
+<!--<gpx-file-upload [multiple]="true"-->
+<!--                 [maxSize]="5"-->
+<!--                 [uploadTitle]="title"-->
+<!--                 (filesUploadedEvent)="filesUploaded($event)">-->
+<!--</gpx-file-upload>-->
+
+<table mat-table aria-describedby="employee table"
+       [dataSource]="dataSource" multiTemplateDataRows
+       class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="birthDate">
+    <th mat-header-cell *matHeaderCellDef>Geburtsdatum</th>
+    <td mat-cell *matCellDef="let element"> {{element.birthDate | date}} </td>
+  </ng-container>
+  <ng-container matColumnDef="file">
+    <th mat-header-cell *matHeaderCellDef>Dateien</th>
+    <td mat-cell *matCellDef="let element">
+      <gpx-file-upload [multiple]="true"
+                       [maxSize]="5"
+                       [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                       [uploadTitle]="title"
+                       (filesUploadedEvent)="filesUploaded(element.id, $event)">
+      </gpx-file-upload>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row" *ngIf="element.files.length > 0"
+              (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="element-detail"
+           [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <table class="table">
+          <tr>
+            <th>Dateiname</th>
+            <th>Relativer Pfad</th>
+            <th>Zuletzt geändert</th>
+            <th>Größe</th>
+            <th>Typ</th>
+          </tr>
+          <tr class="element-diagram" *ngFor="let file of element.files">
+            <td>{{file.name}}</td>
+            <td>{{file.webkitRelativePath}}</td>
+            <td>{{file.lastModified | date}}</td>
+            <td>{{file.size | filesize}}</td>
+            <td>{{file.type}}</td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;"
+      class="element-row"
+      [class.example-expanded-row]="expandedElement === element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+</table>
+
