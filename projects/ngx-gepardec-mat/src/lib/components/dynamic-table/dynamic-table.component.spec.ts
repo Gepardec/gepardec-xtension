@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {TabNavigationComponent} from './tab-navigation.component';
+import {DynamicTableComponent} from './dynamic-table.component';
 
-describe('TabNavigationComponent', () => {
-  let component: TabNavigationComponent;
-  let fixture: ComponentFixture<TabNavigationComponent>;
+describe('DynamicTableComponent', () => {
+  let component: DynamicTableComponent;
+  let fixture: ComponentFixture<DynamicTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TabNavigationComponent]
+      declarations: [DynamicTableComponent]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(TabNavigationComponent);
+    fixture = TestBed.createComponent(DynamicTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

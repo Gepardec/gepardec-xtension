@@ -4,8 +4,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NavigationModule} from './navigation/navigation.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {NavigationModule} from './navigation/navigation.module';
+import {DYNAMIC_TABLE_DEFAULT_CONFIG, DynamicTableConfig} from "ngx-gepardec-mat";
+
+export const TABLE_CONFIG: DynamicTableConfig = {
+  rowColor: 'red',
+  dateFormat: 'yyyy/MM/dd',
+};
 
 @NgModule({
   declarations: [
@@ -13,12 +19,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    NavigationModule,
-    MatToolbarModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    NavigationModule
   ],
-  providers: [],
+  providers: [{provide: DYNAMIC_TABLE_DEFAULT_CONFIG, useValue: TABLE_CONFIG}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

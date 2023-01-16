@@ -27,7 +27,7 @@ export class TabNavigationComponent implements OnInit {
       },
       {
         label: 'Dynamic Table',
-        link: '/dynamic-table-container',
+        link: '/dynamic-table-showcase',
         index: 2
       },
       {

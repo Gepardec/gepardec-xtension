@@ -63,7 +63,7 @@
               "projects/dev-playground/src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "@angular/material/prebuilt-themes/purple-green.css",
               "projects/dev-playground/src/styles.scss"
             ],
             "scripts": []
@@ -127,7 +127,7 @@
               "projects/dev-playground/src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "@angular/material/prebuilt-themes/purple-green.css",
               "projects/dev-playground/src/styles.scss"
             ],
             "scripts": []
