@@ -13,6 +13,10 @@ export const NAVIGATION_ROUTING: Route = {
     {
       path: 'dynamic-table-showcase',
       loadChildren: () => import('../components/dynamic-table-showcase/dynamic-table-showcase.module').then(m => m.DynamicTableShowcaseModule)
+    },
+    {
+      path: 'file-upload',
+      loadChildren: () => import('../components/file-upload-test/file-upload-test.module').then(m => m.FileUploadTestModule)
     }
   ]
 };
