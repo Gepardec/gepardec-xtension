@@ -31,7 +31,7 @@ export class TabNavigationComponent implements OnInit {
         index: 2
       },
       {
-        label: 'File Upload Dynmaic Table',
+        label: 'File Upload Dynamic Table',
         link: '/file-upload-dynamic-table',
         index: 3
       }
