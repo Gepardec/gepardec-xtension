@@ -1,1 +1,85 @@
-<p>expandable-dynamic-table works!</p>
+<table [dataSource]="dataSource"
+       [trackBy]="byIndexTracker"
+       mat-table
+       matSort
+       multiTemplateDataRows>
+  <ng-container *ngFor="let columnSpec of columnSpecs" [matColumnDef]="columnSpec.displayedColumn">
+
+    <!--HEADER-->
+    <ng-container *ngIf="!isColumnSorted(columnSpec.displayedColumn)">
+      <th *matHeaderCellDef mat-header-cell>{{columnSpec.header}}</th>
+    </ng-container>
+
+    <ng-container *ngIf="isColumnSorted(columnSpec.displayedColumn)">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>{{columnSpec.header}}</th>
+    </ng-container>
+
+    <!--DATA-->
+    <ng-container *ngIf="!isInjected(columnSpec.displayedColumn)">
+      <td *matCellDef="let data" mat-cell>
+        {{
+        isSerializedDate(data[columnSpec.displayedColumn]) || isMoment(data[columnSpec.displayedColumn])
+          ? (data[columnSpec.displayedColumn] | date: _dateFormat)
+          : data[columnSpec.displayedColumn]
+        }}</td>
+    </ng-container>
+
+    <ng-container *ngIf="isInjected(columnSpec.displayedColumn)">
+      <td *matCellDef="let data; let dataIdx = dataIndex" mat-cell>
+        <ng-container
+          *ngTemplateOutlet="getInjectedTemplateRef(columnSpec.displayedColumn); context: getViewContext(data, dataIdx)">
+        </ng-container>
+      </td>
+    </ng-container>
+  </ng-container>
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+    <td mat-cell *matCellDef="let item">
+      <button (click)="(expandedItem = expandedItem === item ? null : item); $event.stopPropagation()"
+              aria-label="expand row"
+              mat-icon-button>
+        <ng-container *ngIf="expandedItem !== item; then iconArrowDown; else iconArrowUp"></ng-container>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td *matCellDef="let item; let idx = dataIndex"
+        [attr.colspan]="getDisplayedColumnsWithExpand().length"
+        mat-cell>
+      <div *ngIf="item === expandedItem"
+           @expandRowNgIf
+           class="detail-panel-container mat-elevation-z2">
+        <ng-container
+          *ngTemplateOutlet="expansionMarker.templateRef; context: getViewContext(item, idx)">
+        </ng-container>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="getDisplayedColumnsWithExpand()" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: getDisplayedColumnsWithExpand()"
+      [class.expanded-row]="expandedItem === row"
+      class="element-row"
+      mat-row>
+  </tr>
+  <tr *matRowDef="let row; columns: ['expandedDetail']"
+      class="expandable-row"
+      mat-row>
+  </tr>
+</table>
+<mat-paginator *ngIf="!disablePaginator"
+               [pageSize]="_pageSize"
+               [pageSizeOptions]="_pageSizeOptions"
+               [showFirstLastButtons]="true">
+</mat-paginator>
+
+<ng-template #iconArrowUp>
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</ng-template>
+
+<ng-template #iconArrowDown>
+  <mat-icon>keyboard_arrow_down</mat-icon>
+</ng-template>

@@ -133,7 +133,7 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
   }
 
   updateColorInCss() {
-    this.elementRef.nativeElement.style.setProperty('--rowColor', this._rowColor)
+    this.elementRef.nativeElement.style.setProperty('--rowColor', this._rowColor);
   }
 
   isInjected(columnName: Extract<keyof T | string, string>): boolean {

@@ -16,3 +16,8 @@ export * from './lib/components/dynamic-table/dynamic-table.module';
 export * from './lib/components/dynamic-table/column-spec';
 export * from './lib/components/dynamic-table/DynamicTableConfig';
 export * from './lib/components/dynamic-table/injection-marker.directive';
+
+// Expandable dynamic table
+export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.component';
+export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.module';
+export * from './lib/components/expandable-dynamic-table/expansion-marker.directive';
