@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -29,6 +29,11 @@ export class TabNavigationComponent implements OnInit {
         label: 'File Upload',
         link: '/file-upload',
         index: 2
+      },
+      {
+        label: 'Expandable Dynamic Table',
+        link: '/expandable-dynamic-table',
+        index: 3
       }
     ]
   }

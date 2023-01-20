@@ -17,6 +17,10 @@ export const NAVIGATION_ROUTING: Route = {
     {
       path: 'file-upload',
       loadChildren: () => import('../components/file-upload-test/file-upload-test.module').then(m => m.FileUploadTestModule)
+    },
+    {
+      path: 'expandable-dynamic-table',
+      loadChildren: () => import('../components/expandable-dynamic-table-test/expandable-dynamic-table-test.module').then(m => m.ExpandableDynamicTableTestModule)
     }
   ]
 };
