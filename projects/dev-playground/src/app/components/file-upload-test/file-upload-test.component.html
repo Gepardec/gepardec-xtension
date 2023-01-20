@@ -1,38 +1,32 @@
-<!--<gpx-file-upload [multiple]="true"-->
-<!--                 [maxSize]="5"-->
-<!--                 [uploadTitle]="title"-->
-<!--                 (filesUploadedEvent)="filesUploaded($event)">-->
-<!--</gpx-file-upload>-->
-
 <table mat-table aria-describedby="employee table"
        [dataSource]="dataSource" multiTemplateDataRows
        class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element"> {{asEmployee(element).name}} </td>
   </ng-container>
   <ng-container matColumnDef="birthDate">
     <th mat-header-cell *matHeaderCellDef>Geburtsdatum</th>
-    <td mat-cell *matCellDef="let element"> {{element.birthDate | date}} </td>
+    <td mat-cell *matCellDef="let element"> {{asEmployee(element).birthDate | date}} </td>
   </ng-container>
   <ng-container matColumnDef="file">
     <th mat-header-cell *matHeaderCellDef>Dateien</th>
     <td mat-cell *matCellDef="let element">
       <gpx-file-upload [multiple]="true"
-                       [maxSize]="5"
+                       [maxSize]="maxSize"
                        [noFileUploadedText]="'Keine Dateien hochgeladen.'"
-                       [uploadTitle]="buildTitle(element.files)"
-                       (filesUploadedEvent)="filesUploaded(element.id, $event)">
+                       [uploadTitle]="buildTitle(asEmployee(element).files)"
+                       (filesUploadedEvent)="filesUploaded(asEmployee(element).id, $event)"
+                       (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
       </gpx-file-upload>
     </td>
   </ng-container>
   <ng-container matColumnDef="expand">
     <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button aria-label="expand row" *ngIf="element.files.length > 0"
+      <button mat-icon-button aria-label="expand row" *ngIf="asEmployee(element).files.length > 0"
               (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
-        <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
-        <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+        <ng-container *ngIf="expandedElement !== element; then iconArrowDown; else iconArrowUp"></ng-container>
       </button>
     </td>
   </ng-container>
@@ -42,7 +36,7 @@
     <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
       <div class="element-detail"
            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-        <table class="table">
+        <table class="table" aria-describedby="file list">
           <tr>
             <th>Dateiname</th>
             <th>Relativer Pfad</th>
@@ -50,7 +44,7 @@
             <th>Größe</th>
             <th>Typ</th>
           </tr>
-          <tr class="element-diagram" *ngFor="let file of element.files">
+          <tr class="element-diagram" *ngFor="let file of asEmployee(element).files">
             <td>{{file.name}}</td>
             <td>{{file.webkitRelativePath}}</td>
             <td>{{file.lastModified | date}}</td>
@@ -70,3 +64,10 @@
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
 
+<ng-template #iconArrowUp>
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</ng-template>
+
+<ng-template #iconArrowDown>
+  <mat-icon>keyboard_arrow_down</mat-icon>
+</ng-template>

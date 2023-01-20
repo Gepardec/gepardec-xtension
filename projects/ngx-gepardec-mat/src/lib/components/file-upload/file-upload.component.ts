@@ -13,6 +13,7 @@ export class FileUploadComponent {
   @Input() multiple: boolean = false;
   @Input() maxSize: number = -1;
   @Input() noFileUploadedText: string = 'No file uploaded yet.';
+  @Input() allowOnlyFolders: boolean = false;
 
   @Output() filesUploadedEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
   @Output() maxNumberOfFilesExceededEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();

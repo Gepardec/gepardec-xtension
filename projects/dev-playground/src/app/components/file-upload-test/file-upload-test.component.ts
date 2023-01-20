@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-file-upload-test',
@@ -19,19 +20,31 @@ export class FileUploadTestComponent {
   columnsToDisplay = ['name', 'birthDate', 'file'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: File | null;
+  maxSize: number = -1;
+
+  constructor(private snackbar: MatSnackBar) {
+  }
 
   filesUploaded(index: number, files: Array<File>) {
     this.dataSource[index].files = files;
   }
 
+  maxNumberOfFilesExceeded(files: Array<File>): void {
+    this.snackbar.open(`Cannot upload more than ${this.maxSize} files. You uploaded ${files.length} files.`)
+  }
+
   buildTitle(files: Array<File>) {
     let title = '';
     title = files.length + ' Dateien hochgeladen.';
-    if (files.length == 1) {
+    if (files.length === 1) {
       title = files.length + ' Datei hochgeladen.';
     }
 
     return title;
+  }
+
+  asEmployee(employee: Employee): Employee {
+    return employee;
   }
 }
 
