@@ -26,6 +26,15 @@
 </div>
 
 <div id="Dynamic-Table" class="w3-container tab-item" style="display:none">
+  <input type = "button" onclick = "createDynamicTable()" value = "Fill in data">
+  <gpx-dynamic-table
+    id="gpx-dynamic-table"
+    columns-excluded-from-sort="'age">
+    <ng-template gpx-injection-marker="'firstname-lastname'" let-item>
+      <span>{{item.firstname}} {{item.lastname}}</span>
+    </ng-template>
+  </gpx-dynamic-table>
+
 
 </div>
 
