@@ -7,10 +7,12 @@
     "declarationMap": true,
     "inlineSources": true,
     "strictPropertyInitialization": false,
-    "keyofStringsOnly": false,
-    "types": []
+    "keyofStringsOnly": false
   },
   "exclude": [
     "**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
   ]
 }
