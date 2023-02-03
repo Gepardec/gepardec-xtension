@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { FileUploadWithTableRoutingModule } from './file-upload-with-table-routing.module';
 import { FileUploadWithTableComponent } from './file-upload-with-table.component';
-import {FileUploadModule} from "ngx-gepardec-mat";
+import {
+  DynamicTableModule
+} from '../../../../../ngx-gepardec-mat/src/lib/components/dynamic-table/dynamic-table.module';
+import {FileUploadModule} from '../../../../../ngx-gepardec-mat/src/lib/components/file-upload/file-upload.module';
 
 
 @NgModule({
@@ -13,7 +16,8 @@ import {FileUploadModule} from "ngx-gepardec-mat";
   imports: [
     CommonModule,
     FileUploadWithTableRoutingModule,
-    FileUploadModule
+    FileUploadModule,
+    DynamicTableModule
   ]
 })
 export class FileUploadWithTableModule { }
