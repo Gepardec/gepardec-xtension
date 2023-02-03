@@ -7,15 +7,28 @@
     <script type="text/javascript" src="./ngx-gepardec-custom-elements.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="ngx-gepardec-custom-elements-style.css">
+
+    <style>
+      .tab-bar-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+      }
+
+      .tab-bar-item {
+        flex: 1 1 100%;
+      }
+    </style>
   </head>
 </head>
 <body>
 <img style="width: 100%" src="img/banner-simplify.png" alt="gepardec banner"/>
 
-<div class="w3-bar w3-black">
-  <button class="w3-bar-item w3-button" onclick="openTab('Text-Editor')">Text Editor</button>
-  <button class="w3-bar-item w3-button" onclick="openTab('Dynamic-Table')">Dynamic Table</button>
-  <button class="w3-bar-item w3-button" onclick="openTab('File-Upload')">File Upload</button>
+<div class="tab-bar-container">
+  <button class="tab-bar-item" onclick="openTab('Text-Editor')">Text Editor</button>
+  <button class="tab-bar-item" onclick="openTab('Dynamic-Table')">Dynamic Table</button>
+  <button class="tab-bar-item" onclick="openTab('File-Upload')">File Upload</button>
 </div>
 
 <div id="Text-Editor" class="w3-container tab-item">
