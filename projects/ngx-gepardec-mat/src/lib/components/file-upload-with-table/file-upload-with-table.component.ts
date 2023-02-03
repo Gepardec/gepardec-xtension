@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import {ColumnSpec} from "../../../../../ngx-gepardec-mat/src/lib/components/dynamic-table/column-spec";
-import {Person} from "../../testdata/person.model";
+import {ColumnSpec} from "../dynamic-table/column-spec";
 
 @Component({
-  selector: 'app-file-upload-with-table',
+  selector: 'gpx-file-upload-with-table',
   templateUrl: './file-upload-with-table.component.html',
-  styleUrls: ['./file-upload-with-table.component.scss']
+  styleUrls: ['./file-upload-with-table.component.css']
 })
 export class FileUploadWithTableComponent {
-
 
   dataSource: Array<File>;
 

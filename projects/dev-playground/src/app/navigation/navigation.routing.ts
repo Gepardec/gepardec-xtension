@@ -28,7 +28,7 @@ export const NAVIGATION_ROUTING: Route = {
     },
     {
       path: 'file-upload-with-table',
-      loadChildren: () => import('../components/file-upload-with-table/file-upload-with-table.module').then(m => m.FileUploadWithTableModule)
+      loadChildren: () => import('../components/file-upload-with-table-test/file-upload-with-table-test.module').then(m => m.FileUploadWithTableTestModule)
     }
   ]
 };

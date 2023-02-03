@@ -22,3 +22,7 @@ export * from './lib/components/expandable-dynamic-table/expandable-dynamic-tabl
 export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.module';
 export * from './lib/components/expandable-dynamic-table/expansion-marker.directive';
 export * from './lib/components/expandable-dynamic-table/attach-actions.directive';
+
+// File upload with table
+export * from './lib/components/file-upload-with-table/file-upload-with-table.component';
+export * from './lib/components/file-upload-with-table/file-upload-with-table.module';
