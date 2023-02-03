@@ -38,7 +38,12 @@ export class TabNavigationComponent implements OnInit {
       {
         label: 'Expandable Dynamic Table',
         link: '/expandable-dynamic-table',
-        index: 3
+        index: 4
+      },
+      {
+        label: 'File Upload with Table',
+        link: '/file-upload-with-table',
+        index: 5
       }
     ]
   }

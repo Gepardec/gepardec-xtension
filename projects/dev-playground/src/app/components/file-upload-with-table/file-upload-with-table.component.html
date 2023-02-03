@@ -1,0 +1,9 @@
+<gpx-file-upload [multiple]="true"
+                 [maxSize]="5"
+                 [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                 (filesUploadedEvent)="filesUploaded($event)">
+</gpx-file-upload>
+
+<gpx-dynamic-table [columnSpecs]="columnSpecs"
+                   [data]=dataSource>
+</gpx-dynamic-table>
