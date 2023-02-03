@@ -21,3 +21,4 @@ export * from './lib/components/dynamic-table/injection-marker.directive';
 export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.component';
 export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.module';
 export * from './lib/components/expandable-dynamic-table/expansion-marker.directive';
+export * from './lib/components/expandable-dynamic-table/attach-actions.directive';

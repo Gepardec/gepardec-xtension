@@ -4,4 +4,8 @@
     <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
       geboren und ist somit {{item.age}} Jahre alt.</span>
   </ng-template>
+
+  <ng-template [gpxAttachActions]="'after'" let-item>
+    <button mat-button>KLICKE {{item.firstname}} {{item.lastname}}</button>
+  </ng-template>
 </gpx-expandable-dynamic-table>

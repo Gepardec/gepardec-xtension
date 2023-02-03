@@ -35,12 +35,28 @@
 
   <ng-container matColumnDef="expand">
     <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
-    <td mat-cell *matCellDef="let item">
-      <button (click)="(expandedItem = expandedItem === item ? null : item); $event.stopPropagation()"
-              aria-label="expand row"
-              mat-icon-button>
-        <ng-container *ngIf="expandedItem !== item; then iconArrowDown; else iconArrowUp"></ng-container>
-      </button>
+    <td mat-cell *matCellDef="let item; let idx = dataIndex">
+      <div style="display: flex; flex-direction: row; align-items: center">
+        <!--Display action buttons before expand button-->
+        <ng-container *ngIf="attachActions?.position === 'before'" [ngTemplateOutlet]="actions"></ng-container>
+
+        <!--Expand button-->
+        <button (click)="(expandedItem = expandedItem === item ? null : item); $event.stopPropagation()"
+                aria-label="expand row"
+                mat-icon-button>
+          <ng-container *ngIf="expandedItem !== item; then iconArrowDown; else iconArrowUp"></ng-container>
+        </button>
+
+        <!--Display action buttons after expand button-->
+        <ng-container *ngIf="attachActions?.position === 'after'" [ngTemplateOutlet]="actions"></ng-container>
+
+        <!--Template for injection of action buttons-->
+        <ng-template #actions>
+          <ng-container
+            *ngTemplateOutlet="attachActions.templateRef; context: getViewContext(item, idx)">
+          </ng-container>
+        </ng-template>
+      </div>
     </td>
   </ng-container>
 

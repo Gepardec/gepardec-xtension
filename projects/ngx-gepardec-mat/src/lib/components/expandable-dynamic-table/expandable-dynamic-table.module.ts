@@ -7,12 +7,14 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {ExpansionMarkerDirective} from './expansion-marker.directive';
+import {AttachActionsDirective} from './attach-actions.directive';
 
 
 @NgModule({
   declarations: [
     ExpandableDynamicTableComponent,
-    ExpansionMarkerDirective
+    ExpansionMarkerDirective,
+    AttachActionsDirective
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {ExpansionMarkerDirective} from './expansion-marker.directive';
   ],
   exports: [
     ExpandableDynamicTableComponent,
-    ExpansionMarkerDirective
+    ExpansionMarkerDirective,
+    AttachActionsDirective
   ]
 })
 export class ExpandableDynamicTableModule {
