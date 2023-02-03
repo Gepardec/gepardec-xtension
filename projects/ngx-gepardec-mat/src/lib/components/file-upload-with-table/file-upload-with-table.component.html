@@ -1,9 +1,17 @@
 <gpx-file-upload [multiple]="true"
                  [maxSize]="5"
+                 [allowOnlyFolders]="true"
+                 [uploadedFiles]="dataSource"
                  [noFileUploadedText]="'Keine Dateien hochgeladen.'"
                  (filesUploadedEvent)="filesUploaded($event)">
 </gpx-file-upload>
 
 <gpx-dynamic-table [columnSpecs]="columnSpecs"
                    [data]=dataSource>
+  <ng-template [gpxInjectionMarker]="'actions'" let-item>
+    <button (click)="delete(item.name); $event.stopPropagation()"
+            mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+  </ng-template>
 </gpx-dynamic-table>

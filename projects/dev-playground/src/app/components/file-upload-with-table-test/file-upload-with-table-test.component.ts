@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-file-upload-with-table',
@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./file-upload-with-table-test.component.scss']
 })
 export class FileUploadWithTableTestComponent {
+
+  delete(): boolean {
+    return true;
+  }
 }

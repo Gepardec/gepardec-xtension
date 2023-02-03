@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {ColumnSpec} from "../dynamic-table/column-spec";
+import {Component, Input} from '@angular/core';
+import {ColumnSpec} from '../dynamic-table/column-spec';
 
 @Component({
   selector: 'gpx-file-upload-with-table',
@@ -10,9 +10,7 @@ export class FileUploadWithTableComponent {
 
   dataSource: Array<File>;
 
-  filesUploaded(files: Array<File>) {
-    this.dataSource = files;
-  }
+  @Input() deleteFunction: (param?: any) => boolean;
 
   columnSpecs: ColumnSpec<File>[] = [
     {
@@ -34,6 +32,26 @@ export class FileUploadWithTableComponent {
     {
       displayedColumn: 'type',
       header: 'Typ'
+    },
+    {
+      displayedColumn: 'actions',
+      header: 'Aktionen'
     }
   ];
+
+  filesUploaded(files: Array<File>) {
+    this.dataSource = [
+      ...files
+    ]
+  }
+
+  delete(filename: string): void {
+    if (this.deleteFunction()) {
+      const idx = this.dataSource.findIndex(file => file.name === filename);
+      this.dataSource.splice(idx, 1);
+      this.dataSource = [
+        ...this.dataSource
+      ];
+    }
+  }
 }
