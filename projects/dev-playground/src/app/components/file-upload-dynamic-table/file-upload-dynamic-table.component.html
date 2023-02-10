@@ -5,7 +5,7 @@
     <gpx-file-upload [multiple]="true"
                      [noFileUploadedText]="'Keine Dateien hochgeladen.'"
                      [uploadTitle]="buildTitle(asEmployee(item).files)"
-                     (filesUploadedEvent)="filesUploaded(asEmployee(item).id, $event)">
+                     (uploadedFilesChange)="filesUploaded(asEmployee(item).id, $event)">
     </gpx-file-upload>
   </ng-template>
 </gpx-dynamic-table>

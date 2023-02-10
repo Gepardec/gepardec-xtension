@@ -16,7 +16,7 @@
                        [maxSize]="maxSize"
                        [noFileUploadedText]="'Keine Dateien hochgeladen.'"
                        [uploadTitle]="buildTitle(asEmployee(element).files)"
-                       (filesUploadedEvent)="filesUploaded(asEmployee(element).id, $event)"
+                       (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
                        (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
       </gpx-file-upload>
     </td>

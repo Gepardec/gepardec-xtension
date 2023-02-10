@@ -22,7 +22,7 @@ export class FileUploadComponent {
     this.fileName = this.joinFileNames(this._uploadedFiles);
   }
 
-  @Output() filesUploadedEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
+  @Output() uploadedFilesChange: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
   @Output() maxNumberOfFilesExceededEvent: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
 
   onFileSelected(event: any) {
@@ -49,7 +49,7 @@ export class FileUploadComponent {
 
     if (files) {
       this.fileName = this.joinFileNames(files);
-      this.filesUploadedEvent.emit(files);
+      this.uploadedFilesChange.emit(files);
     }
   }
 

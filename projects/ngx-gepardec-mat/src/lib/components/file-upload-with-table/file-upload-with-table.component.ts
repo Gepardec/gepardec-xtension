@@ -1,16 +1,20 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ColumnSpec} from '../dynamic-table/column-spec';
+import {FileUploadComponent} from '../file-upload/file-upload.component';
 
 @Component({
   selector: 'gpx-file-upload-with-table',
   templateUrl: './file-upload-with-table.component.html',
-  styleUrls: ['./file-upload-with-table.component.css']
+  styleUrls: ['./file-upload-with-table.component.scss']
 })
-export class FileUploadWithTableComponent {
+export class FileUploadWithTableComponent extends FileUploadComponent {
 
   dataSource: Array<File>;
 
   @Input() deleteFunction: (param?: any) => boolean;
+
+  @Output() singleFileUploadClicked: EventEmitter<File> = new EventEmitter<File>();
+  @Output() allFilesUploadClicked: EventEmitter<Array<File>> = new EventEmitter<Array<File>>();
 
   columnSpecs: ColumnSpec<File>[] = [
     {
@@ -39,10 +43,12 @@ export class FileUploadWithTableComponent {
     }
   ];
 
-  filesUploaded(files: Array<File>) {
-    this.dataSource = [
-      ...files
-    ]
+  upload(file: File) {
+    this.singleFileUploadClicked.emit(file);
+  }
+
+  uploadAll() {
+    this.allFilesUploadClicked.emit(this.dataSource);
   }
 
   delete(filename: string): void {

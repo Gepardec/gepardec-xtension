@@ -1,1 +1,7 @@
-<gpx-file-upload-with-table [deleteFunction]="delete.bind(this)"></gpx-file-upload-with-table>
+<gpx-file-upload-with-table [allowOnlyFolders]="true"
+                            [deleteFunction]="delete.bind(this)"
+                            [maxSize]="5"
+                            [multiple]="true"
+                            (singleFileUploadClicked)="upload($event)"
+                            (allFilesUploadClicked)="uploadAll($event)">
+</gpx-file-upload-with-table>

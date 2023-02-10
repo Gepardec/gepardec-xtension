@@ -1,17 +1,34 @@
-<gpx-file-upload [multiple]="true"
-                 [maxSize]="5"
-                 [allowOnlyFolders]="true"
-                 [uploadedFiles]="dataSource"
-                 [noFileUploadedText]="'Keine Dateien hochgeladen.'"
-                 (filesUploadedEvent)="filesUploaded($event)">
-</gpx-file-upload>
+<div class="container">
+  <gpx-file-upload [(uploadedFiles)]="dataSource"
+                   [requiredFileType]="requiredFileType"
+                   [uploadTitle]="'Zum ändern klicken'"
+                   [multiple]="multiple"
+                   [maxSize]="maxSize"
+                   [noFileUploadedText]="'Zum hochladen klicken'"
+                   [allowOnlyFolders]="allowOnlyFolders">
+  </gpx-file-upload>
 
-<gpx-dynamic-table [columnSpecs]="columnSpecs"
-                   [data]=dataSource>
-  <ng-template [gpxInjectionMarker]="'actions'" let-item>
-    <button (click)="delete(item.name); $event.stopPropagation()"
-            mat-icon-button>
-      <mat-icon>delete</mat-icon>
-    </button>
-  </ng-template>
-</gpx-dynamic-table>
+  <ng-container *ngIf="!!dataSource && dataSource.length > 0">
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [disablePaginator]="true"
+                       [data]=dataSource>
+      <ng-template [gpxInjectionMarker]="'actions'" let-item>
+        <button (click)="upload(item); $event.stopPropagation()"
+                mat-icon-button>
+          <mat-icon>upload_file</mat-icon>
+        </button>
+        <button (click)="delete(item.name); $event.stopPropagation()"
+                mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-template>
+    </gpx-dynamic-table>
+
+    <div class="upload-all">
+      <button mat-raised-button color="primary" (click)="uploadAll()">
+        <mat-icon>upload</mat-icon>
+        ALLES HOCHLADEN
+      </button>
+    </div>
+  </ng-container>
+</div>
