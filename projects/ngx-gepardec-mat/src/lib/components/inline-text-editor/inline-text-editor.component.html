@@ -1,14 +1,14 @@
 <div (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="comment-container">
   <ng-container *ngIf="!showCommentEditor">
-    <p (click)="onStartEditing(value)">{{ value }}</p>
-    <button *ngIf="!value"
+    <p data-testid="text-field" (click)="onStartEditing(value)">{{ value }}</p>
+    <button data-testid="add-button" *ngIf="!value"
             (click)="onStartEditing(value)"
             mat-icon-button>
       <mat-icon>add</mat-icon>
     </button>
   </ng-container>
 
-  <gpx-editor-form-field *ngIf="showCommentEditor"
+  <gpx-editor-form-field data-testid="form-field" *ngIf="showCommentEditor"
                          [value]="value"
                          [maximumLetters]="maximumLetters"
                          [formFieldWidth]="formFieldWidth"
