@@ -1,37 +1,37 @@
-<table mat-table [dataSource]="dataSource" matSort>
+<mat-table [dataSource]="dataSource" matSort>
   <ng-container *ngFor="let columnSpec of columnSpecs" [matColumnDef]="columnSpec.displayedColumn">
 
     <!--HEADER-->
     <ng-container *ngIf="!isColumnSorted(columnSpec.displayedColumn)">
-      <th *matHeaderCellDef mat-header-cell>{{columnSpec.header}}</th>
+      <mat-header-cell *matHeaderCellDef>{{columnSpec.header}}</mat-header-cell>
     </ng-container>
 
     <ng-container *ngIf="isColumnSorted(columnSpec.displayedColumn)">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>{{columnSpec.header}}</th>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{columnSpec.header}}</mat-header-cell>
     </ng-container>
 
     <!--DATA-->
     <ng-container *ngIf="!isInjected(columnSpec.displayedColumn)">
-      <td *matCellDef="let data" mat-cell>
+      <mat-cell *matCellDef="let data">
         {{
         isSerializedDate(data[columnSpec.displayedColumn]) || isMoment(data[columnSpec.displayedColumn])
           ? (data[columnSpec.displayedColumn] | date: _dateFormat)
           : data[columnSpec.displayedColumn]
-        }}</td>
+        }}</mat-cell>
     </ng-container>
 
     <ng-container *ngIf="isInjected(columnSpec.displayedColumn)">
-      <td *matCellDef="let data; let dataIdx = index" mat-cell>
+      <mat-cell *matCellDef="let data; let dataIdx = index">
         <ng-container
           *ngTemplateOutlet="getInjectedTemplateRef(columnSpec.displayedColumn); context: getViewContext(data, dataIdx)">
         </ng-container>
-      </td>
+      </mat-cell>
     </ng-container>
   </ng-container>
 
-  <tr *matHeaderRowDef="getDisplayedColumns()" mat-header-row></tr>
-  <tr *matRowDef="let row; columns: getDisplayedColumns()" mat-row></tr>
-</table>
+  <mat-header-row *matHeaderRowDef="getDisplayedColumns()"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: getDisplayedColumns()"></mat-row>
+</mat-table>
 <mat-paginator *ngIf="!disablePaginator"
                [pageSize]="_pageSize"
                [pageSizeOptions]="_pageSizeOptions"
