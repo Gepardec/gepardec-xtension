@@ -1,5 +1,6 @@
-<div class="container">
-  <gpx-file-upload [(uploadedFiles)]="dataSource"
+<div class="component-container">
+  <gpx-file-upload [uploadedFiles]="dataSource"
+                   (uploadedFilesChange)="updateDataSource($event)"
                    [requiredFileType]="requiredFileType"
                    [uploadTitle]="'Zum ändern klicken'"
                    [multiple]="multiple"
@@ -13,19 +14,39 @@
                        [disablePaginator]="true"
                        [data]=dataSource>
       <ng-template [gpxInjectionMarker]="'actions'" let-item>
-        <button (click)="upload(item); $event.stopPropagation()"
-                mat-icon-button>
-          <mat-icon>upload_file</mat-icon>
-        </button>
-        <button (click)="delete(item.name); $event.stopPropagation()"
-                mat-icon-button>
-          <mat-icon>delete</mat-icon>
-        </button>
+        <div class="actions-container">
+          <mat-progress-spinner *ngIf="isUploading(item)"
+                                color="primary"
+                                mode="indeterminate"
+                                class="state-indicator">
+          </mat-progress-spinner>
+
+          <ng-container *ngIf="!isUploading(item) && !isUploaded(item)">
+            <button (click)="upload(item)"
+                    [disabled]="uploadCallback === undefined"
+                    mat-icon-button>
+              <mat-icon>upload_file</mat-icon>
+            </button>
+          </ng-container>
+
+          <ng-container *ngIf="isUploaded(item)">
+            <mat-icon class="state-indicator">done</mat-icon>
+          </ng-container>
+
+          <button (click)="delete(item)"
+                  [disabled]="deleteCallback === undefined"
+                  mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
       </ng-template>
     </gpx-dynamic-table>
 
-    <div class="upload-all">
-      <button mat-raised-button color="primary" (click)="uploadAll()">
+    <div class="upload-all-container">
+      <button (click)="uploadAll()"
+              [disabled]="isAllUploaded()"
+              color="primary"
+              mat-raised-button>
         <mat-icon>upload</mat-icon>
         ALLES HOCHLADEN
       </button>

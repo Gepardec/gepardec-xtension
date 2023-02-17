@@ -5,6 +5,7 @@ import {FileUploadWithTableRoutingTestModule} from './file-upload-with-table-rou
 import {FileUploadWithTableTestComponent} from './file-upload-with-table-test.component';
 import {FileUploadWithTableModule} from 'ngx-gepardec-mat';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CommonModule,
     FileUploadWithTableRoutingTestModule,
     FileUploadWithTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule
   ]
 })
 export class FileUploadWithTableTestModule {

@@ -1,7 +1,30 @@
-<gpx-file-upload-with-table [allowOnlyFolders]="true"
-                            [deleteFunction]="delete.bind(this)"
-                            [maxSize]="5"
-                            [multiple]="true"
-                            (singleFileUploadClicked)="upload($event)"
-                            (allFilesUploadClicked)="uploadAll($event)">
-</gpx-file-upload-with-table>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Alle Dateien über einzelne Schnittstelle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <gpx-file-upload-with-table [allowOnlyFolders]="true"
+                                  [deleteCallback]="delete.bind(this)"
+                                  [maxSize]="5"
+                                  [multiple]="true"
+                                  [uploadCallback]="upload.bind(this)">
+      </gpx-file-upload-with-table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Alle Dateien über Bulk-Schnittstelle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <gpx-file-upload-with-table [allowOnlyFolders]="true"
+                                  [deleteCallback]="delete.bind(this)"
+                                  [maxSize]="5"
+                                  [multiple]="true"
+                                  [uploadAllCallback]="uploadAll.bind(this)"
+                                  [uploadCallback]="upload.bind(this)">
+      </gpx-file-upload-with-table>
+    </mat-card-content>
+  </mat-card>
+</div>

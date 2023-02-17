@@ -1,11 +1,30 @@
-.container {
+.component-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.upload-all {
+.actions-container {
+  display: flex;
+}
+
+.upload-all-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+mat-progress-spinner {
+  display: inline-block;
+  max-width: 24px;
+  max-height: 24px;
+  margin: 12px;
+}
+
+.state-indicator {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 12px;
+  color: green;
 }
