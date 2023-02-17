@@ -30,6 +30,7 @@ export class EditorFormFieldComponent {
   }
 
   triggerResize() {
+    // @ts-ignore
     this._ngZone.onStable.pipe(take(1))
       .subscribe(() => {
         this.autosize.resizeToFitContent(true);
