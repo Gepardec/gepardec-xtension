@@ -6,6 +6,6 @@
   </ng-template>
 
   <ng-template [gpxAttachActions]="'after'" let-item>
-    <button mat-button>KLICKE {{item.firstname}} {{item.lastname}}</button>
+    <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
   </ng-template>
 </gpx-expandable-dynamic-table>

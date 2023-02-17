@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Person, persons} from '../../testdata/person.model';
 import {ColumnSpec} from '../../../../../ngx-gepardec-mat/src/lib/components/dynamic-table/column-spec';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-expandable-dynamic-table-test',
@@ -28,4 +29,11 @@ export class ExpandableDynamicTableTestComponent {
       header: 'Alter'
     }
   ];
+
+  constructor(private snackbar: MatSnackBar) {
+  }
+
+  openSnackbar(item: Person): void {
+    this.snackbar.open(`${item.firstname} ${item.lastname} wurde geklickt!`, 'OK', {duration: 2000});
+  }
 }
