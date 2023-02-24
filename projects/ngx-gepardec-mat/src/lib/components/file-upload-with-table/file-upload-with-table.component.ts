@@ -41,7 +41,8 @@ export class FileUploadWithTableComponent extends FileUploadComponent {
     },
     {
       displayedColumn: 'actions',
-      header: 'Aktionen'
+      header: 'Aktionen',
+      width: '10%'
     }
   ];
 
