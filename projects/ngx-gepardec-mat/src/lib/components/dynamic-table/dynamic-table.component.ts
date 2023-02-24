@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
   Component,
   ContentChildren,
   ElementRef,
@@ -46,7 +46,7 @@ export interface ViewContext<T> {
   templateUrl: './dynamic-table.component.html',
   styleUrls: ['./dynamic-table.component.scss']
 })
-export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
+export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<T>();
 
@@ -112,8 +112,9 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
   ngOnInit(): void {
   }
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     this.updateColorInCss();
+    this.columnSpecs.forEach(spec => this.setWidthForColumn(spec));
   }
 
   isSerializedDate(value: any): boolean {
@@ -134,6 +135,16 @@ export class DynamicTableComponent<T> implements OnInit, AfterContentInit {
 
   updateColorInCss() {
     this.elementRef.nativeElement.style.setProperty('--rowColor', this._rowColor);
+  }
+
+  setWidthForColumn(column: ColumnSpec<T>): void {
+    if (column.width) {
+      const cols = this.elementRef.nativeElement.querySelectorAll(`.mat-column-${column.displayedColumn}`);
+      for (let i = 0; i < cols.length; i++) {
+        cols[i].style.minWidth = column.width;
+        cols[i].style.maxWidth = column.width;
+      }
+    }
   }
 
   isInjected(columnName: Extract<keyof T | string, string>): boolean {

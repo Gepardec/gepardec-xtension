@@ -14,7 +14,7 @@ export class DynamicTableShowcaseComponent {
   columnSpecs: ColumnSpec<Person>[] = [
     {
       displayedColumn: 'firstname-lastname',
-      header: 'Vollständiger Name'
+      header: 'Vollständiger Name',
     },
     // {
     //   displayedColumn: 'firstname',
@@ -26,11 +26,12 @@ export class DynamicTableShowcaseComponent {
     // },
     {
       displayedColumn: 'birthday',
-      header: 'Geburtstag'
+      header: 'Geburtstag',
     },
     {
       displayedColumn: 'age',
-      header: 'Alter'
+      header: 'Alter',
+      width: '200px'
     }
   ];
 }
