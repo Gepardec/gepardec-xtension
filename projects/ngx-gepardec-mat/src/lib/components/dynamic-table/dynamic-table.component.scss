@@ -2,6 +2,6 @@ table {
   width: 100%;
 }
 
-.mat-mdc-row:nth-child(even) {
+.mat-mdc-row:nth-child(odd) {
   background-color: var(--rowColor);
 }
