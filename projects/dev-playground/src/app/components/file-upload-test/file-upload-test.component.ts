@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ColumnSpec} from 'ngx-gepardec-mat';
 
 @Component({
   selector: 'app-file-upload-test',
@@ -18,6 +19,44 @@ export class FileUploadTestComponent {
 
   dataSource: Array<Employee> = EMPLOYEES;
   columnsToDisplay = ['name', 'birthDate', 'file'];
+  columnSpecs: ColumnSpec<Employee>[] = [
+    {
+      displayedColumn: 'name',
+      header: 'Name'
+    },
+    {
+      displayedColumn: 'birthDate',
+      header: 'Geburtsdatum'
+    },
+    {
+      displayedColumn: 'file',
+      header: 'Dateien'
+    }
+  ];
+
+  columnSpecsUploadedTable: ColumnSpec<File>[] = [
+    {
+      displayedColumn: 'name',
+      header: 'Dateiname'
+    },
+    {
+      displayedColumn: 'webkitRelativePath',
+      header: 'Relativer Pfad'
+    },
+    {
+      displayedColumn: 'lastModified',
+      header: 'Zuletzt geändert'
+    },
+    {
+      displayedColumn: 'size',
+      header: 'Größe'
+    },
+    {
+      displayedColumn: 'type',
+      header: 'Typ'
+    }
+  ];
+
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: File | null;
   maxSize: number = -1;
