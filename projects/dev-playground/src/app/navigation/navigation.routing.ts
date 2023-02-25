@@ -7,8 +7,8 @@ export const NAVIGATION_ROUTING: Route = {
   component: TabNavigationComponent,
   children: [
     {
-      path: 'dynamic-table-showcase',
-      loadChildren: () => import('../components/dynamic-table-showcase/dynamic-table-showcase.module').then(m => m.DynamicTableShowcaseModule)
+      path: 'dynamic-table',
+      loadChildren: () => import('../components/dynamic-table-test/dynamic-table-test.module').then(m => m.DynamicTableTestModule)
     },
     {
       path: 'expandable-dynamic-table',

@@ -17,7 +17,7 @@ export class TabNavigationComponent implements OnInit {
     this.navLinks = [
       {
         label: 'Dynamic Table',
-        link: '/dynamic-table-showcase',
+        link: '/dynamic-table',
         index: 0
       },
       {

@@ -4,11 +4,11 @@ import {ColumnSpec} from '../../../../../ngx-gepardec-mat/src/lib/components/dyn
 
 @Component({
   selector: 'app-dynamic-table-showcase',
-  templateUrl: './dynamic-table-showcase.component.html',
-  styleUrls: ['./dynamic-table-showcase.component.scss']
+  templateUrl: './dynamic-table-test.component.html',
+  styleUrls: ['./dynamic-table-test.component.scss']
 })
 
-export class DynamicTableShowcaseComponent {
+export class DynamicTableTestComponent {
 
   data: Person[] = persons;
   columnSpecs: ColumnSpec<Person>[] = [

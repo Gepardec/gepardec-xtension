@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {DynamicTableShowcaseComponent} from './dynamic-table-showcase.component';
+import {DynamicTableTestComponent} from './dynamic-table-test.component';
 
 const routes: Routes = [
-  {path: '', component: DynamicTableShowcaseComponent}
+  {path: '', component: DynamicTableTestComponent}
 ];
 
 @NgModule({
@@ -14,5 +14,5 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class DynamicTableShowcaseRoutingModule {
+export class DynamicTableTestRoutingModule {
 }
