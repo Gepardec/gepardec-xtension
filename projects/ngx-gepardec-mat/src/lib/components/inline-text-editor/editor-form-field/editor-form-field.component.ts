@@ -30,6 +30,8 @@ export class EditorFormFieldComponent {
   }
 
   triggerResize() {
+    // FIXME: Avoid @ts-ignore
+    // @ts-ignore
     this._ngZone.onStable.pipe(take(1))
       .subscribe(() => {
         this.autosize.resizeToFitContent(true);
