@@ -1,12 +1,13 @@
-table {
+mat-table {
   width: 100%;
 }
 
-tr.expandable-row {
+mat-row.expandable-row {
+  min-height: 0;
   height: 0;
 }
 
-.element-row td {
+.element-row mat-cell {
   border-bottom-width: 0;
 }
 
@@ -19,7 +20,19 @@ tr.expandable-row {
   margin: 8px 0;
 }
 
-// Applies this style to every 4th mat-row, starting at the 3rd one
-.mat-mdc-row:nth-child(4n + 3) {
+// Applies this style to every 4th mat-row, starting at the 4th one
+.mat-mdc-row:nth-child(4n + 4) {
   background-color: var(--rowColor);
+}
+
+.mat-column-expand {
+  width: auto;
+}
+
+mat-row.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+mat-row.element-row:not(.expanded-row):active {
+  background: #efefef;
 }
