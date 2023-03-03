@@ -1,11 +1,52 @@
-<gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
-                              [data]="data">
-  <ng-template gpxExpansionMarker let-item>
-    <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
-      geboren und ist somit {{item.age}} Jahre alt.</span>
-  </ng-template>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Einfachste Form der Expandable Dynamic Table</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
+                                  [data]="data">
+      <ng-template gpxExpansionMarker let-item>
+        <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
+          geboren und ist somit {{item.age}} Jahre alt.</span>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
 
-  <ng-template [gpxAttachActions]="'after'" let-item>
-    <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
-  </ng-template>
-</gpx-expandable-dynamic-table>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Expandable Dynamic Table mit angehängten Action-Buttons NACH dem "Erweitern"-Button</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
+                                  [data]="data">
+      <ng-template gpxExpansionMarker let-item>
+        <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
+          geboren und ist somit {{item.age}} Jahre alt.</span>
+      </ng-template>
+
+      <ng-template [gpxAttachActions]="'after'" let-item>
+        <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Expandable Dynamic Table mit angehängten Action-Buttons VOR dem "Erweitern"-Button</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
+                                  [data]="data">
+      <ng-template gpxExpansionMarker let-item>
+        <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
+          geboren und ist somit {{item.age}} Jahre alt.</span>
+      </ng-template>
+
+      <ng-template [gpxAttachActions]="'before'" let-item>
+        <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>

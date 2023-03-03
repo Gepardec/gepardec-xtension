@@ -5,20 +5,22 @@ import {ExpandableDynamicTableTestRoutingModule} from './expandable-dynamic-tabl
 import {DynamicTableModule, ExpandableDynamicTableModule} from 'ngx-gepardec-mat';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
     ExpandableDynamicTableTestComponent
   ],
-  imports: [
-    CommonModule,
-    ExpandableDynamicTableTestRoutingModule,
-    ExpandableDynamicTableModule,
-    DynamicTableModule,
-    MatButtonModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        ExpandableDynamicTableTestRoutingModule,
+        ExpandableDynamicTableModule,
+        DynamicTableModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatCardModule
+    ]
 })
 export class ExpandableDynamicTableTestModule {
 }
