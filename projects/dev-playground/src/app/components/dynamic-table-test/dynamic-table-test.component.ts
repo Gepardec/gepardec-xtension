@@ -13,17 +13,29 @@ export class DynamicTableTestComponent {
   data: Person[] = persons;
   columnSpecs: ColumnSpec<Person>[] = [
     {
+      displayedColumn: 'firstname',
+      header: 'Vorname'
+    },
+    {
+      displayedColumn: 'lastname',
+      header: 'Nachname'
+    },
+    {
+      displayedColumn: 'birthday',
+      header: 'Geburtstag',
+    },
+    {
+      displayedColumn: 'age',
+      header: 'Alter',
+      width: '200px'
+    }
+  ];
+
+  columnSpecsWithCustomColumn: ColumnSpec<Person>[] = [
+    {
       displayedColumn: 'firstname-lastname',
       header: 'Vollständiger Name',
     },
-    // {
-    //   displayedColumn: 'firstname',
-    //   header: 'Vorname'
-    // },
-    // {
-    //   displayedColumn: 'lastname',
-    //   header: 'Nachname'
-    // },
     {
       displayedColumn: 'birthday',
       header: 'Geburtstag',

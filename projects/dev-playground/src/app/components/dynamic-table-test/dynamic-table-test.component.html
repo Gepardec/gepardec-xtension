@@ -1,7 +1,83 @@
-<gpx-dynamic-table [columnSpecs]="columnSpecs"
-                   [data]="data"
-                   [columnsExcludedFromSort]="['age']">
-  <ng-template [gpxInjectionMarker]="'firstname-lastname'" let-item>
-    <span>{{item.firstname}} {{item.lastname}}</span>
-  </ng-template>
-</gpx-dynamic-table>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Einfachste Form der Dynamic Table</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table mit nicht sortierbarer Spalte</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data"
+                       [columnsExcludedFromSort]="['age']">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table mit benutzerdefinierter Spalte</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecsWithCustomColumn"
+                       [data]="data">
+      <ng-template [gpxInjectionMarker]="'firstname-lastname'" let-item>
+        <span>{{item.firstname}} {{item.lastname}}</span>
+      </ng-template>
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table ohne Paginator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data"
+                       [disablePaginator]="true">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table mit benutzerdefinierter Pagegrößen</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data"
+                       [pageSizeOptions]="[3, 6, 9, 12]">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table mit benutzerdefinierter Zeilenfärbung</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data"
+                       [rowColor]="'lightgreen'">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Dynamic Table mit benutzerdefiniertem Datumsformat</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-dynamic-table [columnSpecs]="columnSpecs"
+                       [data]="data" [dateFormat]="'yyyy-MM-dd'">
+    </gpx-dynamic-table>
+  </mat-card-content>
+</mat-card>
