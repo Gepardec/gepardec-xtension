@@ -89,6 +89,8 @@ export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
 
   @ContentChildren(InjectionMarkerDirective) templateRefs: QueryList<InjectionMarkerDirective> = new QueryList<InjectionMarkerDirective>();
 
+  public GPX_PREFIX = 'gpx-column-';
+
   constructor(protected elementRef: ElementRef, @Inject(DYNAMIC_TABLE_DEFAULT_CONFIG) tableConfig: DynamicTableConfig) {
     // merge default config with custom config
     tableConfig = {
@@ -117,7 +119,6 @@ export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.updateColorInCss();
-    this.columnSpecs.forEach(spec => this.setWidthForColumn(spec));
   }
 
   isSerializedDate(value: any): boolean {
@@ -138,16 +139,6 @@ export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
 
   updateColorInCss() {
     this.elementRef.nativeElement.style.setProperty('--rowColor', this._rowColor);
-  }
-
-  setWidthForColumn(column: ColumnSpec<T>): void {
-    if (column.width) {
-      const cols = this.elementRef.nativeElement.querySelectorAll(`.mat-column-${column.displayedColumn}`);
-      for (let i = 0; i < cols.length; i++) {
-        cols[i].style.minWidth = column.width;
-        cols[i].style.maxWidth = column.width;
-      }
-    }
   }
 
   isInjected(columnName: Extract<keyof T | string, string>): boolean {

@@ -3,16 +3,24 @@
 
     <!--HEADER-->
     <ng-container *ngIf="!isColumnSorted(columnSpec.displayedColumn)">
-      <mat-header-cell *matHeaderCellDef>{{columnSpec.header}}</mat-header-cell>
+      <mat-header-cell
+        [style.min-width]="columnSpec?.width"
+        [style.max-width]="columnSpec?.width"
+        *matHeaderCellDef>{{columnSpec.header}}</mat-header-cell>
     </ng-container>
 
     <ng-container *ngIf="isColumnSorted(columnSpec.displayedColumn)">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>{{columnSpec.header}}</mat-header-cell>
+      <mat-header-cell
+        [style.min-width]="columnSpec?.width"
+        [style.max-width]="columnSpec?.width"
+        [ngClass]="GPX_PREFIX + columnSpec.displayedColumn" *matHeaderCellDef mat-sort-header>{{columnSpec.header}}</mat-header-cell>
     </ng-container>
 
     <!--DATA-->
     <ng-container *ngIf="!isInjected(columnSpec.displayedColumn)">
-      <mat-cell *matCellDef="let data">
+      <mat-cell [style.min-width]="columnSpec?.width"
+                [style.max-width]="columnSpec?.width"
+                [ngClass]="GPX_PREFIX + columnSpec.displayedColumn" *matCellDef="let data">
         {{
         isSerializedDate(data[columnSpec.displayedColumn]) || isMoment(data[columnSpec.displayedColumn])
           ? (data[columnSpec.displayedColumn] | date: _dateFormat)
@@ -21,7 +29,10 @@
     </ng-container>
 
     <ng-container *ngIf="isInjected(columnSpec.displayedColumn)">
-      <mat-cell *matCellDef="let data; let dataIdx = index">
+      <mat-cell
+        [style.min-width]="columnSpec?.width"
+        [style.max-width]="columnSpec?.width"
+        [ngClass]="GPX_PREFIX + columnSpec.displayedColumn" *matCellDef="let data; let dataIdx = index">
         <ng-container
           *ngTemplateOutlet="getInjectedTemplateRef(columnSpec.displayedColumn); context: getViewContext(data, dataIdx)">
         </ng-container>
