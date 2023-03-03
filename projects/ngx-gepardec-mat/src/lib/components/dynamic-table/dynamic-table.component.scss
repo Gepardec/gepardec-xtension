@@ -5,3 +5,7 @@ table {
 .mat-mdc-row:nth-child(odd) {
   background-color: var(--rowColor);
 }
+
+mat-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}

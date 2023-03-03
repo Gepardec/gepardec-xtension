@@ -76,6 +76,9 @@ export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
 
   @Input() set pageSizeOptions(pageSizeOptions: number[]) {
     this._pageSizeOptions = pageSizeOptions;
+    if (pageSizeOptions.length > 0) {
+      this._pageSize = pageSizeOptions[0];
+    }
   }
 
   /*Internal fields*/
