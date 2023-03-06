@@ -1,9 +1,9 @@
 import {Directive, TemplateRef} from '@angular/core';
 
 @Directive({
-  selector: '[gpxExpansionMarker]'
+  selector: '[gpxExpansionContent]'
 })
-export class ExpansionMarkerDirective {
+export class ExpansionContentDirective {
 
   constructor(public templateRef: TemplateRef<any>) {
   }

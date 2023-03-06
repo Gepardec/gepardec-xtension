@@ -28,7 +28,7 @@
   <mat-card-content>
     <gpx-dynamic-table [columnSpecs]="columnSpecsWithCustomColumn"
                        [data]="data">
-      <ng-template [gpxInjectionMarker]="'firstname-lastname'" let-item>
+      <ng-template [gpxCustomColumn]="'firstname-lastname'" let-item>
         <span>{{item.firstname}} {{item.lastname}}</span>
       </ng-template>
     </gpx-dynamic-table>

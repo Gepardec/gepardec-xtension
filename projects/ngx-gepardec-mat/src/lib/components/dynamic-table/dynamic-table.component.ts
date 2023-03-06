@@ -18,7 +18,7 @@ import {MatSort} from '@angular/material/sort';
 import {DynamicTableConfig} from './DynamicTableConfig';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import {InjectionMarkerDirective} from './injection-marker.directive';
+import {CustomColumnDirective} from './custom-column.directive';
 
 export function DYNAMIC_TABLE_DEFAULT_CONFIG_FACTORY(): DynamicTableConfig {
   return {
@@ -87,7 +87,7 @@ export class DynamicTableComponent<T> implements OnInit, AfterViewInit {
   _pageSizeOptions!: number[];
   _pageSize!: number;
 
-  @ContentChildren(InjectionMarkerDirective) templateRefs: QueryList<InjectionMarkerDirective> = new QueryList<InjectionMarkerDirective>();
+  @ContentChildren(CustomColumnDirective) templateRefs: QueryList<CustomColumnDirective> = new QueryList<CustomColumnDirective>();
 
   public GPX_PREFIX = 'gpx-column-';
 

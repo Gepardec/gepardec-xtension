@@ -37,7 +37,7 @@
     <mat-cell *matCellDef="let item; let idx = dataIndex">
       <!--      <div style="display: flex; flex-direction: row; align-items: center">-->
       <!--Display action buttons before expand button-->
-      <ng-container *ngIf="attachActions?.position === 'before'" [ngTemplateOutlet]="actions"></ng-container>
+      <ng-container *ngIf="attachToExpansionContent?.position === 'before'" [ngTemplateOutlet]="actions"></ng-container>
 
       <!--Expand button-->
       <button (click)="(expandedItem = expandedItem === item ? null : item); $event.stopPropagation()"
@@ -47,12 +47,12 @@
       </button>
 
       <!--Display action buttons after expand button-->
-      <ng-container *ngIf="attachActions?.position === 'after'" [ngTemplateOutlet]="actions"></ng-container>
+      <ng-container *ngIf="attachToExpansionContent?.position === 'after'" [ngTemplateOutlet]="actions"></ng-container>
 
       <!--Template for injection of action buttons-->
       <ng-template #actions>
         <ng-container
-          *ngTemplateOutlet="attachActions.templateRef; context: getViewContext(item, idx)">
+          *ngTemplateOutlet="attachToExpansionContent.templateRef; context: getViewContext(item, idx)">
         </ng-container>
       </ng-template>
       <!--      </div>-->
@@ -66,7 +66,7 @@
            @expandRowNgIf
            class="detail-panel-container mat-elevation-z2">
         <ng-container
-          *ngTemplateOutlet="expansionMarker.templateRef; context: getViewContext(item, idx)">
+          *ngTemplateOutlet="expansionContent.templateRef; context: getViewContext(item, idx)">
         </ng-container>
       </div>
     </mat-cell>

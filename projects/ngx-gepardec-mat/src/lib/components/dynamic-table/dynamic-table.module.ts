@@ -4,13 +4,13 @@ import {DynamicTableComponent} from './dynamic-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import {InjectionMarkerDirective} from './injection-marker.directive';
+import {CustomColumnDirective} from './custom-column.directive';
 
 
 @NgModule({
   declarations: [
     DynamicTableComponent,
-    InjectionMarkerDirective
+    CustomColumnDirective
   ],
   imports: [
     CommonModule,
@@ -20,7 +20,7 @@ import {InjectionMarkerDirective} from './injection-marker.directive';
   ],
   exports: [
     DynamicTableComponent,
-    InjectionMarkerDirective
+    CustomColumnDirective
   ]
 })
 export class DynamicTableModule {

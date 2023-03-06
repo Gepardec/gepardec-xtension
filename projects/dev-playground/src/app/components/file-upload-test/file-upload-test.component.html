@@ -2,7 +2,7 @@
   <gpx-expandable-dynamic-table [data]="dataSource"
                                 [columnSpecs]="columnSpecs"
                                 [disablePaginator]="true">
-    <ng-template [gpxInjectionMarker]="'file'" let-element>
+    <ng-template [gpxCustomColumn]="'file'" let-element>
       <gpx-file-upload [multiple]="true"
                        [maxSize]="maxSize"
                        [noFileUploadedText]="'Keine Dateien hochgeladen.'"
@@ -12,7 +12,7 @@
       </gpx-file-upload>
     </ng-template>
 
-    <ng-template gpxExpansionMarker let-element>
+    <ng-template gpxExpansionContent let-element>
       <gpx-dynamic-table [data]="element.files"
                          [columnSpecs]="columnSpecsUploadedTable"
                          [disablePaginator]="true">

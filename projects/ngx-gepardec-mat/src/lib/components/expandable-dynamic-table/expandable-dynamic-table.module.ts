@@ -6,16 +6,16 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {ExpansionMarkerDirective} from './expansion-marker.directive';
-import {AttachActionsDirective} from './attach-actions.directive';
+import {ExpansionContentDirective} from './expansion-content.directive';
+import {AttachToExpansionContentDirective} from './attach-to-expansion-content.directive';
 import {DynamicTableModule} from '../dynamic-table/dynamic-table.module';
 
 
 @NgModule({
   declarations: [
     ExpandableDynamicTableComponent,
-    ExpansionMarkerDirective,
-    AttachActionsDirective
+    ExpansionContentDirective,
+    AttachToExpansionContentDirective
   ],
   imports: [
     CommonModule,
@@ -28,8 +28,8 @@ import {DynamicTableModule} from '../dynamic-table/dynamic-table.module';
   ],
   exports: [
     ExpandableDynamicTableComponent,
-    ExpansionMarkerDirective,
-    AttachActionsDirective,
+    ExpansionContentDirective,
+    AttachToExpansionContentDirective,
     DynamicTableModule
   ]
 })

@@ -13,7 +13,7 @@
     <gpx-dynamic-table [columnSpecs]="columnSpecs"
                        [disablePaginator]="true"
                        [data]=dataSource>
-      <ng-template [gpxInjectionMarker]="'actions'" let-item>
+      <ng-template [gpxCustomColumn]="'actions'" let-item>
         <div class="actions-container">
           <mat-progress-spinner *ngIf="isUploading(item)"
                                 color="primary"

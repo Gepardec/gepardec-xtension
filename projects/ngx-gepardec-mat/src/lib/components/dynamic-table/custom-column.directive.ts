@@ -1,11 +1,11 @@
 import {Directive, Input, TemplateRef} from '@angular/core';
 
 @Directive({
-  selector: '[gpxInjectionMarker]'
+  selector: '[gpxCustomColumn]'
 })
-export class InjectionMarkerDirective {
+export class CustomColumnDirective {
 
-  @Input('gpxInjectionMarker') columnName!: string;
+  @Input('gpxCustomColumn') columnName!: string;
 
   constructor(public templateRef: TemplateRef<any>) {
 

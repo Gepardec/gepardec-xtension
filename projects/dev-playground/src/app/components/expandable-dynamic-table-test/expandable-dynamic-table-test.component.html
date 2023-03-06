@@ -5,7 +5,7 @@
   <mat-card-content>
     <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
                                   [data]="data">
-      <ng-template gpxExpansionMarker let-item>
+      <ng-template gpxExpansionContent let-item>
         <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
           geboren und ist somit {{item.age}} Jahre alt.</span>
       </ng-template>
@@ -20,12 +20,12 @@
   <mat-card-content>
     <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
                                   [data]="data">
-      <ng-template gpxExpansionMarker let-item>
+      <ng-template gpxExpansionContent let-item>
         <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
           geboren und ist somit {{item.age}} Jahre alt.</span>
       </ng-template>
 
-      <ng-template [gpxAttachActions]="'after'" let-item>
+      <ng-template [gpxAttachToExpansionContent]="'after'" let-item>
         <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
       </ng-template>
     </gpx-expandable-dynamic-table>
@@ -39,12 +39,12 @@
   <mat-card-content>
     <gpx-expandable-dynamic-table [columnSpecs]="columnSpecs"
                                   [data]="data">
-      <ng-template gpxExpansionMarker let-item>
+      <ng-template gpxExpansionContent let-item>
         <span>{{item.firstname}} {{item.lastname}} ist am {{item.birthday | date: 'dd.MM.yyyy'}}
           geboren und ist somit {{item.age}} Jahre alt.</span>
       </ng-template>
 
-      <ng-template [gpxAttachActions]="'before'" let-item>
+      <ng-template [gpxAttachToExpansionContent]="'before'" let-item>
         <button mat-raised-button (click)="openSnackbar(item)">Open Snackbar</button>
       </ng-template>
     </gpx-expandable-dynamic-table>

@@ -15,13 +15,13 @@ export * from './lib/components/dynamic-table/dynamic-table.component';
 export * from './lib/components/dynamic-table/dynamic-table.module';
 export * from './lib/components/dynamic-table/column-spec';
 export * from './lib/components/dynamic-table/DynamicTableConfig';
-export * from './lib/components/dynamic-table/injection-marker.directive';
+export * from './lib/components/dynamic-table/custom-column.directive';
 
 // Expandable dynamic table
 export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.component';
 export * from './lib/components/expandable-dynamic-table/expandable-dynamic-table.module';
-export * from './lib/components/expandable-dynamic-table/expansion-marker.directive';
-export * from './lib/components/expandable-dynamic-table/attach-actions.directive';
+export * from './lib/components/expandable-dynamic-table/expansion-content.directive';
+export * from './lib/components/expandable-dynamic-table/attach-to-expansion-content.directive';
 
 // File upload with table
 export * from './lib/components/file-upload-with-table/file-upload-with-table.component';

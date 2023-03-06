@@ -2,8 +2,8 @@ import {Component, ContentChild, ElementRef, Inject} from '@angular/core';
 import {animate, style, transition, trigger} from '@angular/animations';
 import {DYNAMIC_TABLE_DEFAULT_CONFIG, DynamicTableComponent} from '../dynamic-table/dynamic-table.component';
 import {DynamicTableConfig} from '../dynamic-table/DynamicTableConfig';
-import {ExpansionMarkerDirective} from './expansion-marker.directive';
-import {AttachActionsDirective} from './attach-actions.directive';
+import {ExpansionContentDirective} from './expansion-content.directive';
+import {AttachToExpansionContentDirective} from './attach-to-expansion-content.directive';
 
 @Component({
   selector: 'gpx-expandable-dynamic-table',
@@ -28,8 +28,8 @@ export class ExpandableDynamicTableComponent<T> extends DynamicTableComponent<T>
 
   expandedItem: T | null;
 
-  @ContentChild(ExpansionMarkerDirective) expansionMarker!: ExpansionMarkerDirective;
-  @ContentChild(AttachActionsDirective) attachActions!: AttachActionsDirective;
+  @ContentChild(ExpansionContentDirective) expansionContent!: ExpansionContentDirective;
+  @ContentChild(AttachToExpansionContentDirective) attachToExpansionContent!: AttachToExpansionContentDirective;
 
   constructor(protected elRef: ElementRef,
               @Inject(DYNAMIC_TABLE_DEFAULT_CONFIG) protected config: DynamicTableConfig
