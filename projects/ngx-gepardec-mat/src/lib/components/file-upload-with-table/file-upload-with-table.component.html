@@ -12,7 +12,16 @@
   <ng-container *ngIf="!!dataSource && dataSource.length > 0">
     <gpx-dynamic-table [columnSpecs]="columnSpecs"
                        [disablePaginator]="true"
+                       [columnsExcludedFromSort]="['actions']"
                        [data]=dataSource>
+      <ng-template [gpxCustomColumn]="'lastModified'" let-item>
+        <span>{{item.lastModified | date: 'dd.MM.yyyy'}}</span>
+      </ng-template>
+
+      <ng-template [gpxCustomColumn]="'size'" let-item>
+        <span>{{formatBytes(item.size)}}</span>
+      </ng-template>
+
       <ng-template [gpxCustomColumn]="'actions'" let-item>
         <div class="actions-container">
           <mat-progress-spinner *ngIf="isUploading(item)"

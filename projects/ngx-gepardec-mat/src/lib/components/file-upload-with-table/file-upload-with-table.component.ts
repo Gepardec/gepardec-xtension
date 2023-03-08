@@ -128,6 +128,18 @@ export class FileUploadWithTableComponent extends FileUploadComponent {
     }
   }
 
+  formatBytes(bytes: number, decimals = 2) {
+    if (!+bytes) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+  }
+
   private deleteFromTable(file: File) {
     const idx = this.dataSource.findIndex(fi => fi.name === file.name);
     this.dataSource.splice(idx, 1);
