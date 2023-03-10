@@ -1,8 +1,29 @@
-<div class="container">
-  <gpx-inline-text-editor [value]="value"
-                          [formFieldWidth]="'50%'"
-                          [maximumLetters]="200"
-                          (valueChangeEvent)="valueChange($event)"></gpx-inline-text-editor>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Inline Text Editor mit default Werten</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container">
+      <gpx-inline-text-editor [value]="valueFirstExample"
+                              (valueChangeEvent)="valueChangeFirstExample($event)"></gpx-inline-text-editor>
 
-  Current Value: {{value}}
-</div>
+      Current Value: {{valueFirstExample}}
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Inline Text Editor beschränkte Eingabegröße und angepassten Eingabefeld</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="container">
+      <gpx-inline-text-editor [value]="valueSecondExample"
+                              [formFieldWidth]="'10%'"
+                              [maximumLetters]="10"
+                              (valueChangeEvent)="valueChangeSecondExample($event)"></gpx-inline-text-editor>
+
+      Current Value: {{valueSecondExample}}
+    </div>
+  </mat-card-content>
+</mat-card>

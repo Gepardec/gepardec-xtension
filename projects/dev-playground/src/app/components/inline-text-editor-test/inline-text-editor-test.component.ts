@@ -7,9 +7,13 @@ import { Component } from '@angular/core';
 })
 export class InlineTextEditorTestComponent {
 
-  value: string = "gepardec-xtension";
+  valueFirstExample: string = "text-field wants to be edited";
+  valueSecondExample: string = "edit field";
 
-  valueChange(value: string): void {
-    this.value = value;
+  valueChangeFirstExample(valueFirstExample: string): void {
+    this.valueFirstExample = valueFirstExample;
+  }
+  valueChangeSecondExample(valueSecondExample: string): void {
+    this.valueSecondExample = valueSecondExample;
   }
 }

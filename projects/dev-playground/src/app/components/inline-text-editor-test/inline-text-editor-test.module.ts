@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {InlineTextEditorTestComponent} from './inline-text-editor-test.component';
 import {InlineTextEditorTestRoutingModule} from './inline-text-editor-test-routing.module';
 import {InlineTextEditorModule} from 'ngx-gepardec-mat';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {InlineTextEditorModule} from 'ngx-gepardec-mat';
   imports: [
     CommonModule,
     InlineTextEditorModule,
-    InlineTextEditorTestRoutingModule
+    InlineTextEditorTestRoutingModule,
+    MatCardModule
   ]
 })
 export class InlineTextEditorTestModule {
