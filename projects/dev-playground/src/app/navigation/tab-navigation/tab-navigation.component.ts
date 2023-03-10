@@ -16,28 +16,28 @@ export class TabNavigationComponent implements OnInit {
   ) {
     this.navLinks = [
       {
-        label: 'Dynamic Table',
-        link: '/dynamic-table',
-        index: 0
-      },
-      {
-        label: 'Expandable Dynamic Table',
-        link: '/expandable-dynamic-table',
-        index: 1
-      },
-      {
         label: 'Inline Text Editor',
         link: '/inline-text-editor',
-        index: 2
+        index: 0
       },
       {
         label: 'File Upload',
         link: '/file-upload',
-        index: 3
+        index: 1
+      },
+      {
+        label: 'Dynamic Table',
+        link: '/dynamic-table',
+        index: 2
       },
       {
         label: 'File Upload with Table',
         link: '/file-upload-with-table',
+        index: 3
+      },
+      {
+        label: 'Expandable Dynamic Table',
+        link: '/expandable-dynamic-table',
         index: 4
       }
     ]
