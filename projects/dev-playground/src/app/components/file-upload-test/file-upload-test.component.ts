@@ -1,32 +1,24 @@
 import {Component} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ColumnSpec} from 'ngx-gepardec-mat';
 
 @Component({
   selector: 'app-file-upload-test',
   templateUrl: './file-upload-test.component.html',
-  styleUrls: ['./file-upload-test.component.scss'],
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
-      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
+  styleUrls: ['./file-upload-test.component.scss']
 })
 export class FileUploadTestComponent {
 
   dataSource: Array<Employee> = EMPLOYEES;
-  columnsToDisplay = ['name', 'birthDate', 'file'];
+  columnsToDisplay = ['name', 'changeDate', 'file'];
   columnSpecs: ColumnSpec<Employee>[] = [
     {
       displayedColumn: 'name',
       header: 'Name'
     },
     {
-      displayedColumn: 'birthDate',
-      header: 'Geburtsdatum'
+      displayedColumn: 'changeDate',
+      header: 'Änderungsdatum'
     },
     {
       displayedColumn: 'file',
@@ -59,7 +51,7 @@ export class FileUploadTestComponent {
 
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: File | null;
-  maxSize: number = -1;
+  maxSize: number = 3;
 
   constructor(private snackbar: MatSnackBar) {
   }
@@ -90,7 +82,7 @@ export class FileUploadTestComponent {
 export interface Employee {
   id: number;
   name: string;
-  birthDate: Date;
+  changeDate: Date;
   files: Array<File>;
 }
 
@@ -98,19 +90,19 @@ const EMPLOYEES: Array<Employee> = [
   {
     id: 0,
     name: 'Christoph Ruhsam',
-    birthDate: new Date(),
+    changeDate: new Date(),
     files: []
   },
   {
     id: 1,
     name: 'Marcel Reiter',
-    birthDate: new Date(),
+    changeDate: new Date(),
     files: []
   },
   {
     id: 2,
     name: 'Oliver Tod',
-    birthDate: new Date(),
+    changeDate: new Date(),
     files: []
   }
 ]

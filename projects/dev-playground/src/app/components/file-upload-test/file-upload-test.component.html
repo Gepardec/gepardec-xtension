@@ -1,22 +1,144 @@
-<div class="mat-elevation-z8">
-  <gpx-expandable-dynamic-table [data]="dataSource"
-                                [columnSpecs]="columnSpecs"
-                                [disablePaginator]="true">
-    <ng-template [gpxCustomColumn]="'file'" let-element>
-      <gpx-file-upload [multiple]="true"
-                       [maxSize]="maxSize"
-                       [noFileUploadedText]="'Keine Dateien hochgeladen.'"
-                       [uploadTitle]="buildTitle(asEmployee(element).files)"
-                       (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
-                       (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
-      </gpx-file-upload>
-    </ng-template>
+<mat-card>
+  <mat-card-header>
+    File Upload mit einzelnem File
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [data]="dataSource"
+                                  [columnSpecs]="columnSpecs"
+                                  [disablePaginator]="true">
 
-    <ng-template gpxExpansionContent let-element>
-      <gpx-dynamic-table [data]="element.files"
-                         [columnSpecs]="columnSpecsUploadedTable"
-                         [disablePaginator]="true">
-      </gpx-dynamic-table>
-    </ng-template>
-  </gpx-expandable-dynamic-table>
-</div>
+      <ng-template [gpxCustomColumn]="'file'" let-element>
+        <gpx-file-upload [multiple]="false"
+                         [maxSize]="maxSize"
+                         [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                         [uploadTitle]="buildTitle(asEmployee(element).files)"
+                         (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
+                         (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
+        </gpx-file-upload>
+      </ng-template>
+
+      <ng-template gpxExpansionContent let-element>
+        <gpx-dynamic-table [data]="element.files"
+                           [columnSpecs]="columnSpecsUploadedTable"
+                           [disablePaginator]="true">
+        </gpx-dynamic-table>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    File Upload mit maximal 3 Files
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [data]="dataSource"
+                                  [columnSpecs]="columnSpecs"
+                                  [disablePaginator]="true">
+
+      <ng-template [gpxCustomColumn]="'file'" let-element>
+        <gpx-file-upload [multiple]="true"
+                         [maxSize]="maxSize"
+                         [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                         [uploadTitle]="buildTitle(asEmployee(element).files)"
+                         (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
+                         (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
+        </gpx-file-upload>
+      </ng-template>
+
+      <ng-template gpxExpansionContent let-element>
+        <gpx-dynamic-table [data]="element.files"
+                           [columnSpecs]="columnSpecsUploadedTable"
+                           [disablePaginator]="true">
+        </gpx-dynamic-table>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    File Upload anderem Default Text und anderem Uploaded Text
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [data]="dataSource"
+                                  [columnSpecs]="columnSpecs"
+                                  [disablePaginator]="true">
+
+      <ng-template [gpxCustomColumn]="'file'" let-element>
+        <gpx-file-upload [multiple]="true"
+                         [maxSize]="maxSize"
+                         [noFileUploadedText]="'Lade hier Dateien hoch.'"
+                         [uploadTitle]="'Gratuliere. Du kannst Dateien hochladen.'"
+                         (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
+                         (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
+        </gpx-file-upload>
+      </ng-template>
+
+      <ng-template gpxExpansionContent let-element>
+        <gpx-dynamic-table [data]="element.files"
+                           [columnSpecs]="columnSpecsUploadedTable"
+                           [disablePaginator]="true">
+        </gpx-dynamic-table>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    File Upload mit DropDown
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [data]="dataSource"
+                                  [columnSpecs]="columnSpecs"
+                                  [disablePaginator]="true">
+
+      <ng-template [gpxCustomColumn]="'file'" let-element>
+        <gpx-file-upload [multiple]="true"
+                         [maxSize]="maxSize"
+                         [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                         [uploadTitle]="buildTitle(asEmployee(element).files)"
+                         (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
+                         (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
+        </gpx-file-upload>
+      </ng-template>
+
+      <ng-template gpxExpansionContent let-element>
+        <gpx-dynamic-table [data]="element.files"
+                           [columnSpecs]="columnSpecsUploadedTable"
+                           [disablePaginator]="true">
+        </gpx-dynamic-table>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    File Upload mit Ordner
+  </mat-card-header>
+  <mat-card-content>
+    <gpx-expandable-dynamic-table [data]="dataSource"
+                                  [columnSpecs]="columnSpecs"
+                                  [disablePaginator]="true">
+
+      <ng-template [gpxCustomColumn]="'file'" let-element>
+        <gpx-file-upload [allowOnlyFolders]="true"
+                         [maxSize]="maxSize"
+                         [noFileUploadedText]="'Keine Dateien hochgeladen.'"
+                         [uploadTitle]="buildTitle(asEmployee(element).files)"
+                         (uploadedFilesChange)="filesUploaded(asEmployee(element).id, $event)"
+                         (maxNumberOfFilesExceededEvent)="maxNumberOfFilesExceeded($event)">
+        </gpx-file-upload>
+      </ng-template>
+
+      <ng-template gpxExpansionContent let-element>
+        <gpx-dynamic-table [data]="element.files"
+                           [columnSpecs]="columnSpecsUploadedTable"
+                           [disablePaginator]="true">
+        </gpx-dynamic-table>
+      </ng-template>
+    </gpx-expandable-dynamic-table>
+  </mat-card-content>
+</mat-card>
