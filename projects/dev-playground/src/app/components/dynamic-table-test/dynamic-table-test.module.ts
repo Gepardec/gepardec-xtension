@@ -21,12 +21,12 @@ const tableConfig: DynamicTableConfig = {
     DynamicTableModule,
     MatCardModule
   ],
-  providers: [
-    {
-      provide: DYNAMIC_TABLE_DEFAULT_CONFIG,
-      useValue: tableConfig
-    }
-  ]
+  // providers: [
+  //   {
+  //     provide: DYNAMIC_TABLE_DEFAULT_CONFIG,
+  //     useValue: tableConfig
+  //   }
+  // ]
 })
 export class DynamicTableTestModule {
 }
